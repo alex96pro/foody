@@ -1,0 +1,21 @@
+@import "../../_variables.scss";
+@import "../../_mixins.scss";
+.profile{
+    @include flexAlignment(center,column,wrap);
+    color:$accent-color;
+    font-weight: bold;
+    &-label{
+        margin:6px 0px;
+    }
+}
+.change-password-button{
+    color:darkorange;
+    border:none;
+    outline: none;
+    background-color: inherit;
+    font-size: 16px;
+    margin-top:10px;
+    &:hover{
+        color:$accent-color;
+    }
+}

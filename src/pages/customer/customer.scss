@@ -1,0 +1,17 @@
+@import "../../_variables.scss";
+@import "../../_mixins.scss";
+.customer{
+    @include flexAlignment(center,column,wrap);
+    color:$accent-color;
+    font-weight: bold;
+    &-label{
+        margin:6px 0px;
+    }
+}
+.customer-button{
+    @include button(darkorange, white, 8px 8px, 8px 8px, none, bold);
+    &:hover{
+        background-color: $accent-color;
+        color:white;
+    }
+}

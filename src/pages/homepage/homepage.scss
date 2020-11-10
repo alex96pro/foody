@@ -1,0 +1,8 @@
+@import "../../_mixins";
+@import "../../_variables";
+.homepage{
+    @include flexAlignment(center,column,wrap);
+    color:white;
+    font-size:20px;
+}
+    

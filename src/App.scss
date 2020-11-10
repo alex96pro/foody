@@ -1,0 +1,23 @@
+@import "_variables.scss";
+
+html, body{
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  font-family: $main-font;
+  background-image: url("images/homepage-photo.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.wrapper{
+  padding:20px 20px;
+  margin:20px 20px;
+  background-color: rgba(218, 221, 224, 0.8);
+}
+.message-danger{
+  color:rgb(235, 68, 46);
+  font-weight: bold;
+}
+
+
+

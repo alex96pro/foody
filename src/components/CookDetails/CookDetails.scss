@@ -1,0 +1,25 @@
+@import "../../_variables.scss";
+@import "../../_mixins.scss";
+.cook-details{
+    @include flexAlignment(center, row, wrap);
+    margin:10px 10px;
+    padding:10px 10px;
+    &-button{
+        @include button($accent-color, white, 4px 4px, 4px 4px, none, bold);
+        &:hover{
+            background-color: darkorange;
+        }
+    }
+}
+.animate-cook-details{
+    animation-name: focus;
+    animation-duration: 1.5s;
+}
+@keyframes focus {
+    0%   {background-color: darkorange;}
+    20%  {background-color: rgb(252, 171, 72);}
+    40%  {background-color: rgb(245, 181, 104);}
+    60% {background-color: rgb(240, 198, 146);}
+    80% {background-color: rgb(240, 198, 146);}
+    100% {background-color: rgba(218, 221, 224, 0.8);}
+}

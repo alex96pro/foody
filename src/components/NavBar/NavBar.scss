@@ -1,0 +1,17 @@
+@import "../../_variables.scss";
+@import "../../_mixins.scss";
+nav{
+    background-color:$accent-color;
+    color:white;
+    padding: 30px 30px;
+    font-size: 18px;
+    @include flexAlignment(flex-end, row, wrap);
+    .navLink{
+        color:white;
+        text-decoration: none;
+        margin: 10px 10px;
+        &:hover{
+            color:darkorange;
+        }
+    }
+}

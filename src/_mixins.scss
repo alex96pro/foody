@@ -1,0 +1,16 @@
+@mixin flexAlignment($alignment, $direction, $wrap){
+    display: flex;
+    justify-content: $alignment;
+    align-items: $alignment;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+}
+@mixin button($background-color, $color, $margin, $padding, $border, $font-weight){
+    background-color: $background-color;
+    color: $color;
+    margin: $margin;
+    padding: $padding;
+    border: $border;
+    font-weight: $font-weight;
+    cursor:pointer;
+}
