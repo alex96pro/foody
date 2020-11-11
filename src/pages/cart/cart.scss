@@ -7,12 +7,20 @@
     padding:10px 10px;
 }
 .cart-meal-details{
-    @include flexAlignment(space-between,center,row,nowrap);
-    width:50%;
+    @include flexAlignment(center,center,column,nowrap);
+    width:25%;
     background-color: rgba(218, 221, 224, 0.8);
     margin: 4px 4px;
     padding: 10px 10px;
 }
 .cart-header{
     color:white;
+    text-align: center;
+}
+.remove-from-cart-button{
+    @include button(rgb(230, 59, 59),white,4px 4px, 8px 8px, none, bold);
+    &:hover{
+        background-color: $accent-color;
+        color:white;
+    }
 }

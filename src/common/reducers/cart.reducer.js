@@ -1,4 +1,5 @@
 import { PUT_MEAL_IN_CART } from '../actions/cart.actions';
+import { REMOVE_MEAL_FROM_CART } from '../actions/cart.actions';
 
 const initialState = {
     meals:[]
@@ -9,6 +10,10 @@ export default function cartReducer(state = initialState, action){
             return{
                 ...state,
                 meals: [...state.meals, action.payload]
+            }
+        case REMOVE_MEAL_FROM_CART:
+            return{
+                meals: state.meals.filter(meal=>meal.mealId !== action.payload.mealId)
             }
         default:
             return state;
