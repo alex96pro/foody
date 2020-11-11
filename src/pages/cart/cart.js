@@ -15,12 +15,12 @@ export default function Cart(props){
     return(
         <div>
             <NavBar isLoggedIn = {true} role={localStorage.getItem("role")}/>
-            <div className="cart-meals">
-                <div className="cart-header">
+            <div className="cart-header">
                     {meals.length?<h1>Meals in your cart</h1>:<div>
                     <h1>You don't have any meals in your cart</h1>
                     <Link to="/customer"><button className="main-button">Find Cooks</button></Link></div>}
-                </div>
+            </div>
+            <div className="cart-meals">
                     {meals.map(
                         (mealWithAmount,index)=>
                         <div className="cart-meal-details" key={index}>
@@ -31,7 +31,7 @@ export default function Cart(props){
                                 <div>Amount:{mealWithAmount.amount}</div>
                             </div>
                             <div>
-                                <div>Price:{mealWithAmount.amount*mealWithAmount.meal.price}$</div>
+                                <div className="cart-price">Price:{mealWithAmount.amount*mealWithAmount.meal.price}$</div>
                             </div>
                             <div>
                                 <img src={MealIcon} alt="jej" width="40px" height="40px"/>
@@ -42,6 +42,12 @@ export default function Cart(props){
                         </div>
                     )}
             </div>
+            {meals.length?
+            <div className="cart-checkout">
+                <button className="checkout-button">Checkout{' '}
+                {(meals.reduce((sum,current)=>sum+current.meal.price * current.amount, 0)).toFixed(2)}$
+                </button>
+            </div>:null}
         </div>
     );
 };

@@ -7,6 +7,7 @@ import { useState } from 'react';
 import {putMealInCart, increaseMealAmountInCart} from '../../common/actions/cart.actions';
 import Modal from 'react-modal';
 import { useForm } from 'react-hook-form';
+Modal.setAppElement('#root'); //da ne izbacuje gresku u konzoli za modal
 
 export default function CustomerMeals(props){
 
@@ -16,9 +17,6 @@ export default function CustomerMeals(props){
     const [state,setState] = useState({openModal:false,selectedMeal:{}});
     const {register, handleSubmit, errors} = useForm();
 
-    const handleAddToCart = (meal) =>{
-        setState({openModal:true,selectedMeal:meal})
-    }
     const onSubmit = (data) =>{
         let mealExistsInCart = false;
         let id;
@@ -36,6 +34,9 @@ export default function CustomerMeals(props){
         }
         setState({openModal:false,selectedMeal:{}})
     }
+    const handleAddToCart = (meal) =>{
+        setState({openModal:true,selectedMeal:meal})
+    }
     const cancelModal = () =>{
         setState({openModal:false,selectedMeal:{}})
     }
@@ -49,7 +50,7 @@ export default function CustomerMeals(props){
                     <div>
                         <div className="meal-name">{meal.name}</div>
                         <div>{meal.description}</div>
-                        <div>{meal.price}$</div>
+                        <div className="cart-price">{meal.price}$</div>
                         <div> 
                             <button onClick={()=>handleAddToCart(meal)} className="button-add-to-cart">Add to cart</button>
                         </div>
