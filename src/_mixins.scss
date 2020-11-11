@@ -1,7 +1,7 @@
-@mixin flexAlignment($alignment, $direction, $wrap){
+@mixin flexAlignment($horizontal-alignment, $vertical-alignment, $direction, $wrap){
     display: flex;
-    justify-content: $alignment;
-    align-items: $alignment;
+    justify-content: $horizontal-alignment;
+    align-items: $vertical-alignment;
     flex-direction: $direction;
     flex-wrap: $wrap;
 }

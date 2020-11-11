@@ -13,6 +13,7 @@ html, body{
   padding:20px 20px;
   margin:20px 20px;
   background-color: rgba(218, 221, 224, 0.8);
+  position: relative; //za animaciju, moze se koristiti left,right,top,bottom
 }
 .message-danger{
   color:rgb(235, 68, 46);
