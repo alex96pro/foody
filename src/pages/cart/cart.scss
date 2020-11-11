@@ -1,0 +1,18 @@
+@import "../../_variables.scss";
+@import "../../_mixins.scss";
+
+.cart-meals{
+    @include flexAlignment(center,center,column,wrap);
+    margin:6px 6px;
+    padding:10px 10px;
+}
+.cart-meal-details{
+    @include flexAlignment(space-between,center,row,nowrap);
+    width:50%;
+    background-color: rgba(218, 221, 224, 0.8);
+    margin: 4px 4px;
+    padding: 10px 10px;
+}
+.cart-header{
+    color:white;
+}

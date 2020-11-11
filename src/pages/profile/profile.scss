@@ -1,7 +1,7 @@
 @import "../../_variables.scss";
 @import "../../_mixins.scss";
 .profile{
-    @include flexAlignment(center,column,wrap);
+    @include flexAlignment(center,center,column,wrap);
     color:$accent-color;
     font-weight: bold;
     &-label{

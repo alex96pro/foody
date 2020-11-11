@@ -16,6 +16,7 @@ function Login(props){
         if(response.data !== null){
           let loginToken = response.data.accessToken;
           localStorage.setItem("loginToken", loginToken);
+          localStorage.setItem("email", response.data.email);
             if(response.data.userType === "Cook"){
               localStorage.setItem("role","COOK");
               props.history.push("/cook");

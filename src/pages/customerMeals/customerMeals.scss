@@ -1,0 +1,36 @@
+@import "../../_variables.scss";
+@import "../../_mixins.scss";
+
+.customer-meals{
+    @include flexAlignment(center,center,column,wrap);
+    align-items: center;
+    margin:6px 6px;
+    padding:10px 10px;
+
+    &-button{
+        @include button($accent-color, white, 4px 4px, 4px 4px, none, bold);
+        &:hover{
+            background-color: darkorange;
+        }
+    }
+}
+.meal-details{
+    @include flexAlignment(space-between,center,row,nowrap);
+    width:50%;
+    background-color: rgba(218, 221, 224, 0.8);
+    margin: 4px 4px;
+    padding: 10px 10px;
+}
+.button-add-to-cart{
+    //($background-color, $color, $margin, $padding, $border, $font-weight){
+    @include button($accent-color, white, 2px 2px, 4px 4px, none, bold);
+    &:hover{
+        background-color: darkorange;
+    }
+}
+.meal-name{
+    color:$accent-color;
+    font-weight: bold;
+    font-size:20px;
+    margin-bottom: 6px;
+}
