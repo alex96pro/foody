@@ -22,10 +22,16 @@ export default function Cart(props){
                     <Link to="/customer"><button className="main-button">Find Cooks</button></Link></div>}
                 </div>
                     {meals.map(
-                        (meal,index)=>
+                        (mealWithAmount,index)=>
                         <div className="cart-meal-details" key={index}>
                             <div>
-                                <div>{meal.name}</div>
+                                <div>{mealWithAmount.meal.name}</div>
+                            </div>
+                            <div>
+                                <div>Amount:{mealWithAmount.amount}</div>
+                            </div>
+                            <div>
+                                <div>Price:{mealWithAmount.amount*mealWithAmount.meal.price}$</div>
                             </div>
                             <div>
                                 <img src={MealIcon} alt="jej" width="40px" height="40px"/>
