@@ -34,8 +34,6 @@
 }
 .modal-add-to-cart{
     @include flexAlignment(flex-start,center,column,wrap);
-    //position:absolute;
-    //left:100px;
     margin: auto;
     margin-top:100px;
     background-color: $accent-color;
@@ -57,4 +55,8 @@
     &:hover{
         background-color:rgb(230, 17, 17);
     }
+}
+.cart-price{
+    font-size: 20px;
+    color:$accent-color;
 }
