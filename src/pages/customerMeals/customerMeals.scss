@@ -3,7 +3,6 @@
 
 .customer-meals{
     @include flexAlignment(center,center,column,wrap);
-    align-items: center;
     margin:6px 6px;
     padding:10px 10px;
 
@@ -22,7 +21,6 @@
     padding: 10px 10px;
 }
 .button-add-to-cart{
-    //($background-color, $color, $margin, $padding, $border, $font-weight){
     @include button($accent-color, white, 2px 2px, 4px 4px, none, bold);
     &:hover{
         background-color: darkorange;
@@ -33,4 +31,30 @@
     font-weight: bold;
     font-size:20px;
     margin-bottom: 6px;
+}
+.modal-add-to-cart{
+    @include flexAlignment(flex-start,center,column,wrap);
+    //position:absolute;
+    //left:100px;
+    margin: auto;
+    margin-top:100px;
+    background-color: $accent-color;
+    border:none;
+    height:35%;
+    width: 30%;
+    color:white;
+}
+.add-to-cart-modal-button{
+    @include button(rgb(76, 185, 76), $accent-color, 12px 12px, 14px 24px, none, bold);
+    font-size: 18px;
+    &:hover{
+        background-color:rgb(30, 196, 30);
+    }
+}
+.cancel-cart-modal-button{
+    @include button(rgb(233, 56, 56), $accent-color, 12px 12px, 14px 24px, none, bold);
+    font-size: 18px;
+    &:hover{
+        background-color:rgb(230, 17, 17);
+    }
 }
