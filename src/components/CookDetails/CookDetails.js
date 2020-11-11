@@ -10,7 +10,6 @@ export default function CookDetails(props){
     
     const dispatch = useDispatch();
     const handleShowMeals = (userId) =>{
-      console.log(111);
       axios.get("/customer/meals/"+userId)
         .then(response=>{
           dispatch(putSelectedMealsInStore(response.data));

@@ -13,7 +13,8 @@ export default function cartReducer(state = initialState, action){
             }
         case REMOVE_MEAL_FROM_CART:
             return{
-                meals: state.meals.filter(meal=>meal.mealId !== action.payload.mealId)
+                ...state,
+                meals: state.meals.filter((meal,index)=>index!==action.payload)
             }
         default:
             return state;

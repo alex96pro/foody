@@ -9,8 +9,8 @@ export default function Cart(props){
     
     const meals = useSelector(state=>state.cartReducer.meals);
     const dispatch = useDispatch();
-    const handleRemove = (meal) =>{
-        dispatch(removeMealFromCart(meal));
+    const handleRemove = (index) =>{
+        dispatch(removeMealFromCart(index));
     }
     return(
         <div>
@@ -22,8 +22,8 @@ export default function Cart(props){
                     <Link to="/customer"><button className="main-button">Find Cooks</button></Link></div>}
                 </div>
                     {meals.map(
-                        meal=>
-                        <div className="cart-meal-details">
+                        (meal,index)=>
+                        <div className="cart-meal-details" key={index}>
                             <div>
                                 <div>{meal.name}</div>
                             </div>
@@ -31,7 +31,7 @@ export default function Cart(props){
                                 <img src={MealIcon} alt="jej" width="40px" height="40px"/>
                             </div>
                             <div>
-                                <button className="remove-from-cart-button" onClick={()=>handleRemove(meal)}>Remove</button>
+                                <button className="remove-from-cart-button" onClick={()=>handleRemove(index)}>Remove</button>
                             </div>
                         </div>
                     )}

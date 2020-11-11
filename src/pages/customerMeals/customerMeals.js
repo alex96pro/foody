@@ -20,7 +20,7 @@ export default function CustomerMeals(props){
         <div className="customer-meals">
             {meals.map(
                 meal=>
-                <div className="meal-details">
+                <div className="meal-details" key={meal.mealId}>
                     <div>
                         <div className="meal-name">{meal.name}</div>
                         <div>{meal.description}</div>
