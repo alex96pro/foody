@@ -4,6 +4,7 @@ import NavBar from '../../components/NavBar/NavBar.js';
 import "./login.scss";
 import {useForm} from 'react-hook-form';
 import {useState} from 'react';
+import { BACKEND_API } from '../../consts';
 
 function Login(props){
 
@@ -11,12 +12,13 @@ function Login(props){
   const [state,setState] = useState({message:''});
 
   const onSubmit = (data) => {
-      axios.post('/auth/login',{email:data.email, password:data.password})
+      axios.post(`${BACKEND_API}/auth/login`,{email:data.email, password:data.password})
       .then(response => {
         if(response.data !== null){
           let loginToken = response.data.accessToken;
           localStorage.setItem("loginToken", loginToken);
           localStorage.setItem("email", response.data.email);
+          localStorage.setItem("userId", response.data.userId);
             if(response.data.userType === "Cook"){
               localStorage.setItem("role","COOK");
               props.history.push("/cook");
