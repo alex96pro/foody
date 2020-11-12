@@ -37,12 +37,12 @@
     }
 }
 .modal-rate-cook{
-    @include flexAlignment(flex-start,center,column,wrap);
+    @include flexAlignment(center,center,column,wrap);
     margin: auto;
     margin-top:100px;
     background-color: $accent-color;
     border:none;
-    height:35%;
+    height:45%;
     width: 30%;
     color:white;
 }

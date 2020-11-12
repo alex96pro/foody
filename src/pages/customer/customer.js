@@ -8,7 +8,7 @@ import {putCooksInStore} from '../../common/actions/customer.actions';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
-import { BACKEND_API } from '../../consts';
+
 export default function Customer(props){
 
   const {register, handleSubmit, errors} = useForm();
@@ -17,7 +17,7 @@ export default function Customer(props){
   const cooks = useSelector(state=>state.customerReducer.cooks);
   
   const onSubmit = (data) =>{
-      axios.post(`${BACKEND_API}/customer/searchCooksByLocation`,{searchValue:data.address})
+      axios.post(`/customer/searchCooksByLocation`,{searchValue:data.address})
       .then(response =>{
         if(response.data !== null){
           dispatch(putCooksInStore(response.data));
