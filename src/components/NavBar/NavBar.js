@@ -7,12 +7,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { viewProfile, logout } from '../../common/actions/profile.actions';
 import CartIcon from '../../images/shopping-cart.png';
 
+
 export default function NavBar(props){
 
   const dispatch = useDispatch();
   const numberOfMealsInCart = useSelector(state=>state.cartReducer.meals.length);
   const handleProfile = () =>{
-    axios.get('/auth/profile',{headers:{'Authorization':`Basic ${localStorage.getItem("loginToken")}`}})
+    axios.get(`/auth/profile`,{headers:{'Authorization':`Basic ${localStorage.getItem("loginToken")}`}})
       .then(response =>{
         dispatch(viewProfile(response.data));
       })

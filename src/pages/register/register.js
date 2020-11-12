@@ -5,13 +5,15 @@ import "./register.scss";
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 
+
+
 function Register(props){
   
   const {register, handleSubmit, errors} = useForm();
   const [state,setState] = useState({message:''});
 
   const onSubmit = (data) =>{
-    axios.post('/auth/register',{data})
+    axios.post(`/auth/register`,{data})
       .then(response =>{
         switch(response.data){
           case "Registered":

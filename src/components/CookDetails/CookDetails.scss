@@ -6,7 +6,7 @@
     padding:10px 10px;
 
     &-button{
-        @include button($accent-color, white, 4px 4px, 4px 4px, none, bold);
+        @include button($accent-color, white, 8px 8px, 8px 8px, none, bold);
         &:hover{
             background-color: darkorange;
         }
@@ -28,4 +28,35 @@
     80% {left:20px;}
     90% {left:10px;}
     100% {left:0px;}
+}
+.rate-button{
+    @include button(darkorange,$accent-color,4px 4px, 4px 4px, none, bold);
+    &:hover{
+        background-color: $accent-color;
+        color:white;
+    }
+}
+.modal-rate-cook{
+    @include flexAlignment(center,center,column,wrap);
+    margin: auto;
+    margin-top:100px;
+    background-color: $accent-color;
+    border:none;
+    height:45%;
+    width: 30%;
+    color:white;
+}
+.modal-rate-cook-button{
+    @include button(rgb(76, 185, 76), $accent-color, 12px 12px, 14px 24px, none, bold);
+    font-size: 18px;
+    &:hover{
+        background-color:rgb(30, 196, 30);
+    }
+}
+.modal-rate-cook-cancel-button{
+    @include button(rgb(233, 56, 56), $accent-color, 12px 12px, 14px 24px, none, bold);
+    font-size: 18px;
+    &:hover{
+        background-color:rgb(230, 17, 17);
+    }
 }

@@ -17,7 +17,7 @@ export default function Customer(props){
   const cooks = useSelector(state=>state.customerReducer.cooks);
   
   const onSubmit = (data) =>{
-      axios.post("/customer/searchCooksByLocation",{searchValue:data.address})
+      axios.post(`/customer/searchCooksByLocation`,{searchValue:data.address})
       .then(response =>{
         if(response.data !== null){
           dispatch(putCooksInStore(response.data));
