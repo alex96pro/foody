@@ -28,7 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy":"http://localhost:3392",
+  "proxy":"https://foody-aleksandar-backend.herokuapp.com",
   "eslintConfig": {
     "extends": "react-app"
   },
