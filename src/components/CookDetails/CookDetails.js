@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { putSelectedMealsInStore } from '../../common/actions/customer.actions';
-
+import { BACKEND_API } from '../../consts';
 import Modal from 'react-modal';
 Modal.setAppElement('#root'); //da ne izbacuje gresku u konzoli za modal
 
@@ -17,7 +17,7 @@ export default function CookDetails(props){
     const [state,setState] = useState({openModal:false, selectedCook:{}})
     const {register, handleSubmit, errors} = useForm();
     const handleShowMeals = (userId) =>{
-    axios.get(`/customer/meals/`+userId)
+    axios.get(`${BACKEND_API}/customer/meals/`+userId)
         .then(response=>{
           dispatch(putSelectedMealsInStore(response.data));
         })
@@ -27,7 +27,7 @@ export default function CookDetails(props){
     };
     const onSubmitRating = (data) =>{
       console.log(data.rating+" "+data.description);
-      axios.post(`/customer/rate`,
+      axios.post(`${BACKEND_API}/customer/rate`,
       {cookId:state.selectedCook.userId, customerId:localStorage.getItem("userId"),rating:data.rating,description:data.description})
       .then(response => {
         if(response.data ==="RATED"){

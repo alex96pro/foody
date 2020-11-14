@@ -23,7 +23,6 @@ function App(){
           <Route path="/profile" exact component={Profile}></Route>
           <Route path="/customerMeals" exact component={customerMeals}></Route>
           <Route path="/cart" exact component={Cart}></Route>
-          
         </div>
       </Router>
     );

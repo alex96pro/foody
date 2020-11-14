@@ -4,8 +4,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import "./register.scss";
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-
-
+import { BACKEND_API } from '../../consts';
 
 function Register(props){
   
@@ -13,7 +12,7 @@ function Register(props){
   const [state,setState] = useState({message:''});
 
   const onSubmit = (data) =>{
-    axios.post(`/auth/register`,{data})
+    axios.post(`${BACKEND_API}/auth/register`,{data})
       .then(response =>{
         switch(response.data){
           case "Registered":
