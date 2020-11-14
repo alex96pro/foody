@@ -12,7 +12,7 @@ function Login(props){
   const [state,setState] = useState({message:''});
 
   const onSubmit = (data) => {
-      axios.post(`/auth/login`,{email:data.email, password:data.password})
+      axios.post(`https://foody-aleksandar-backend.herokuapp.com/auth/login`,{email:data.email, password:data.password})
       .then(response => {
         if(response.data !== null){
           let loginToken = response.data.accessToken;
