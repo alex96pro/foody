@@ -12,7 +12,7 @@ function Register(props){
   const [state,setState] = useState({message:''});
 
   const onSubmit = (data) =>{
-    axios.post(`${BACKEND_API}/auth/register`,{data})
+    axios.post(`${BACKEND_API}/auth/register`,{email:data.email, fullname:data.fullname, password:data.password, location:data.location, userType:data.userType})
       .then(response =>{
         switch(response.data){
           case "Registered":
