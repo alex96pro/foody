@@ -5,72 +5,73 @@ import NavBar from '../../components/NavBar/NavBar';
 import MealIcon from '../../images/meal-icon.jpg';
 import { useState } from 'react';
 import {putMealInCart, increaseMealAmountInCart} from '../../common/actions/cart.actions';
-import Modal from 'react-modal';
-import { useForm } from 'react-hook-form';
-Modal.setAppElement('#root'); //da ne izbacuje gresku u konzoli za modal
+import Spinner from '../../images/spinner.gif';
+import {CURRENCY} from '../../consts';
+import AddMealToCartModal from './addMealToCart.modal';
 
-export default function CustomerMeals(props){
+export default function CustomerMeals(){
 
-    const meals = useSelector(state=>state.customerReducer.meals);
-    const mealsInCart = useSelector(state=>state.cartReducer.meals);
+    const meals = useSelector(state => state.customerReducer.meals);
+    const mealsInCart = useSelector(state => state.cartReducer.meals);
+    const loadingStatus = useSelector(state => state.customerReducer.loadingStatus);
     const dispatch = useDispatch();
     const [state,setState] = useState({openModal:false,selectedMeal:{}});
-    const {register, handleSubmit, errors} = useForm();
+
+    const addToCart = (meal) =>{
+        setState({openModal:true,selectedMeal:meal})
+    };
+
+    const cancelModal = () =>{
+        setState({openModal:false,selectedMeal:{}})
+    };
 
     const onSubmit = (data) =>{
         let mealExistsInCart = false;
         let id;
-        for(let i=0;i<mealsInCart.length;i++){
+        for(let i = 0; i < mealsInCart.length; i++){
             if(mealsInCart[i].meal.mealId === state.selectedMeal.mealId){
-                    mealExistsInCart = true;
-                    id = mealsInCart[i].meal.mealId;
-                    break;
+                mealExistsInCart = true;
+                id = mealsInCart[i].meal.mealId;
+                break;
             }
         }
         if(mealExistsInCart){                               //meal already exists in cart
-            dispatch(increaseMealAmountInCart(id));
+            dispatch(increaseMealAmountInCart({id:id, amount:data.amount}));
         }else{                                              //meal doesnt exist in cart
             dispatch(putMealInCart({meal:state.selectedMeal, amount:data.amount})); 
         }
-        setState({openModal:false,selectedMeal:{}})
+        setState({openModal:false, selectedMeal:{}})
     }
-    const handleAddToCart = (meal) =>{
-        setState({openModal:true,selectedMeal:meal})
-    }
-    const cancelModal = () =>{
-        setState({openModal:false,selectedMeal:{}})
-    }
+
     return (
     <div>
         <NavBar isLoggedIn={true} role={localStorage.getItem("role")}/>
+        {loadingStatus?<div className = "spinner"><img src={Spinner} alt="Loading..." width="900px" height="600px"/></div>:
         <div className="customer-meals">
             {meals.map(
-                meal=>
+                meal =>
                 <div className="meal-details" key={meal.mealId}>
                     <div>
                         <div className="meal-name">{meal.name}</div>
                         <div>{meal.description}</div>
-                        <div className="cart-price">{meal.price}$</div>
+                        <div className="cart-price">{meal.price}{CURRENCY}</div>
                         <div> 
-                            <button onClick={()=>handleAddToCart(meal)} className="button-add-to-cart">Add to cart</button>
+                            <button onClick={() => addToCart(meal)} className="button-add-to-cart">Add to cart</button>
                         </div>
                     </div>
                     <div>
-                        <img src={MealIcon} alt="jej" width="40px" height="40px"/>
+                        <img src={MealIcon} alt="Meal icon" width="40px" height="40px"/>
                     </div>
                 </div>
             )}
-        </div>
-        <Modal isOpen={state.openModal} onRequestClose={()=>setState({openModal:false,selectedMeal:{}})} className="modal-add-to-cart">
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div><h2>{state.selectedMeal.name}</h2></div>
-                <div>Amount</div>
-                <input type="number" defaultValue="1" name="amount" ref={register()}></input>
-                <div>Aditional info</div>
-                <textarea></textarea>
-                <div><button className="cancel-cart-modal-button" onClick={cancelModal}>Cancel</button>
-                <button type="submit" className="add-to-cart-modal-button">Add</button></div>
-            </form>
-        </Modal>
-    </div>);
-}
+        </div>}
+        {state.openModal && 
+        <AddMealToCartModal 
+            openModal={state.openModal} 
+            selectedMeal={state.selectedMeal}
+            onSubmit={onSubmit}
+            cancelModal={cancelModal}
+        />}
+    </div>
+    );
+};

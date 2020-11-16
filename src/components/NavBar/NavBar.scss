@@ -1,11 +1,14 @@
 @import "../../_variables.scss";
 @import "../../_mixins.scss";
-nav{
-    background-color:$accent-color;
+
+.nav-bar{
+
+    @include flexAlignment(flex-end,center,row,wrap);
+    background-color:rgba(57, 82, 92, 0.7);;
     color:white;
     padding: 30px 30px;
     font-size: 18px;
-    @include flexAlignment(flex-end,center,row,wrap);
+   
     .nav-link{
         color:white;
         text-decoration: none;
@@ -15,9 +18,16 @@ nav{
             color:darkorange;
         }
     }
+
+    .cart-number{
+        border:2px solid;
+        border-radius: 2px;
+        font-size: 16px;
+    }
+
+    .cart-icon{
+        height:25px; 
+        width:25px;
+    }
 }
-.cart-number{
-    border:2px solid;
-    border-radius: 2px;
-    font-size: 16px;
-}
+

@@ -1,43 +1,31 @@
 import React from 'react';
-import axios from 'axios';
-//import {Link} from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar.js';
 import CookDetails from '../../components/CookDetails/CookDetails.js';
 import './customer.scss';
-import {putCooksInStore} from '../../common/actions/customer.actions';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
-import { BACKEND_API } from '../../consts';
+import {getCooksAPI} from '../../common/api/customer.api';
+import Spinner from '../../images/spinner.gif';
 
-export default function Customer(props){
+export default function Customer(){
 
-  const {register, handleSubmit, errors} = useForm();
-  const [state,setState] = useState({message:''});
-  const dispatch = useDispatch();
-  const cooks = useSelector(state=>state.customerReducer.cooks);
-  
-  const onSubmit = (data) =>{
-      axios.post(`${BACKEND_API}/customer/searchCooksByLocation`,{searchValue:data.address})
-      .then(response =>{
-        if(response.data !== null){
-          dispatch(putCooksInStore(response.data));
-          setState({message:""});
-        }else{
-          setState({message:"No cooks on location '"+data.address+"'"});
-        }
-      })
-      .catch(error =>{
-        console.log(error);
-      })
+    const {register, handleSubmit, errors} = useForm();
+    const dispatch = useDispatch();
+    const cooks = useSelector(state => state.customerReducer.cooks);
+    const message = useSelector(state => state.customerReducer.message);
+    const loadingStatus = useSelector(state => state.customerReducer.loadingStatus);
+
+    const searchByLocation = (data) => {
+        dispatch(getCooksAPI(data));
     };
+
     return (
       <div>
-        <NavBar isLoggedIn = {true} role={localStorage.getItem("role")}/>
+        <NavBar isLoggedIn={true} role={localStorage.getItem("role")}/>
         <div className="customer">
           <div className="wrapper">
             <h2>Welcome Customer !</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(searchByLocation)}>
               Search cooks by location
               <input
               type="text"
@@ -47,10 +35,11 @@ export default function Customer(props){
               {errors.address && <p>Address is required</p>}
               <button type="submit" className="customer-button">Search</button>
             </form>
-            <div className="message-danger">{state.message}</div>
+            <div className="message-danger">{message}</div>
           </div>
         </div>
-        {cooks?<CookDetails cooks={cooks}/>:null}
+        {loadingStatus?<div className="spinner"><img src={Spinner} alt="Loading..."/></div>:
+        <CookDetails cooks={cooks}/>}
       </div>
     );
-}
+};

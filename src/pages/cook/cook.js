@@ -3,7 +3,7 @@ import React from 'react';
 //import {Link} from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar.js';
 
-function Cook(){
+export default function Cook(){
   
     return (
       <div>
@@ -13,6 +13,4 @@ function Cook(){
         </div>
       </div>
     );
-}
-
-export default Cook;
+};

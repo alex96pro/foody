@@ -1,23 +1,23 @@
 import React from 'react';
 import './App.scss';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import Homepage from './pages/homepage/homepage.js';
+import Landing from './pages/landing/landing.js';
 import Login from './pages/login/login.js';
-import Register from './pages/register/register.js';
+import SignUp from './pages/signUp/signUp.js';
 import Cook from './pages/cook/cook.js';
 import Customer from './pages/customer/customer.js';
 import Profile from './pages/profile/profile.js';
 import customerMeals from './pages/customerMeals/customerMeals';
 import Cart from './pages/cart/cart';
 
-function App(){
+export default function App(){
   
     return (
       <Router>
         <div>
-          <Route path="/" exact component={Homepage}></Route>
+          <Route path="/" exact component={Landing}></Route>
           <Route path="/login" exact component={Login}></Route>
-          <Route path="/register" exact component={Register}></Route>
+          <Route path="/sign-up" exact component={SignUp}></Route>
           <Route path="/cook" exact component={Cook}></Route>
           <Route path="/customer" exact component={Customer}></Route>
           <Route path="/profile" exact component={Profile}></Route>
@@ -26,6 +26,4 @@ function App(){
         </div>
       </Router>
     );
-}
-
-export default App;
+};

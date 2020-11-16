@@ -1,6 +1,8 @@
 @import "../../_variables.scss";
 @import "../../_mixins.scss";
+
 .cook-details{
+    
     @include flexAlignment(center,center,row,wrap);
     margin:10px 10px;
     padding:10px 10px;
@@ -11,52 +13,31 @@
             background-color: darkorange;
         }
     }
-}
-.animate-cook-details{
-    animation-name: move-from-right-to-left;
-    animation-duration: 0.2s;
-}
-@keyframes move-from-right-to-left {
-    0%  {left:100px;}
-    10% {left:90px;}
-    20% {left:80px;}
-    30% {left:70px;}
-    40% {left:60px;}
-    50% {left:50px;}
-    60% {left:40px;}
-    70% {left:30px;}
-    80% {left:20px;}
-    90% {left:10px;}
-    100% {left:0px;}
-}
-.rate-button{
-    @include button(darkorange,$accent-color,4px 4px, 4px 4px, none, bold);
-    &:hover{
-        background-color: $accent-color;
-        color:white;
+
+    .animate-cook-details{
+        animation-name: move-from-right-to-left;
+        animation-duration: 0.2s;
     }
-}
-.modal-rate-cook{
-    @include flexAlignment(center,center,column,wrap);
-    margin: auto;
-    margin-top:100px;
-    background-color: $accent-color;
-    border:none;
-    height:45%;
-    width: 30%;
-    color:white;
-}
-.modal-rate-cook-button{
-    @include button(rgb(76, 185, 76), $accent-color, 12px 12px, 14px 24px, none, bold);
-    font-size: 18px;
-    &:hover{
-        background-color:rgb(30, 196, 30);
+    @keyframes move-from-right-to-left {
+        0%  {left:100px;}
+        10% {left:90px;}
+        20% {left:80px;}
+        30% {left:70px;}
+        40% {left:60px;}
+        50% {left:50px;}
+        60% {left:40px;}
+        70% {left:30px;}
+        80% {left:20px;}
+        90% {left:10px;}
+        100% {left:0px;}
     }
+
+    .rate-button{
+        @include button(darkorange,$accent-color,4px 4px, 4px 4px, none, bold);
+        &:hover{
+            background-color: $accent-color;
+            color:white;
+        }
+    } 
 }
-.modal-rate-cook-cancel-button{
-    @include button(rgb(233, 56, 56), $accent-color, 12px 12px, 14px 24px, none, bold);
-    font-size: 18px;
-    &:hover{
-        background-color:rgb(230, 17, 17);
-    }
-}
+

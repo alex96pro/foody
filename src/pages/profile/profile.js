@@ -1,6 +1,4 @@
 import React from 'react';
-//import axios from 'axios';
-//import {Link} from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar.js';
 import ChangePassword from '../../components/ChangePassword/ChangePassword.js';
 import {useSelector} from 'react-redux';
@@ -8,17 +6,20 @@ import {useState} from 'react';
 import Spinner from '../../images/spinner.gif';
 import './profile.scss';
 
-function Profile(){
+export default function Profile(){
 
-    const [state,setState] = useState({showChangePassword:false});
+    const [state, setState] = useState({showChangePassword:false});
     const user = useSelector(state => state.profileReducer.user);
-    const handleShowChangePassword = () =>{
+    
+    const handleShowChangePassword = () => {
       setState({showChangePassword:true});
-    }
+    };
+
     return (
       <div>
-        <NavBar isLoggedIn = {true} role={localStorage.getItem("role")}/>
-        {user.fullname?
+        <NavBar isLoggedIn={true} role={localStorage.getItem("role")}/>
+        {user.loadingStatus?
+        <div className = "spinner"><img src={Spinner} alt="Loading..."/></div>:
           <div className="profile">
             <div className="wrapper">
                 <h2>Profile page</h2>
@@ -31,12 +32,9 @@ function Profile(){
                 <div><button className="change-password-button" onClick={handleShowChangePassword}>
                 Change Password</button></div>
             </div>
-            {state.showChangePassword? <div className="wrapper"><ChangePassword/></div>:null}
-          </div>:<div style={{textAlign:"center"}}><img src={Spinner} alt="Loading..." width="900px" height="600px"/></div>
+            {state.showChangePassword && <div className="wrapper"><ChangePassword/></div>}
+          </div>
         }
-        
       </div>
     ); 
-}
-
-export default Profile;
+};
