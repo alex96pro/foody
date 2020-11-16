@@ -1,0 +1,27 @@
+@import "../../_mixins";
+@import "../../_variables";
+
+.landing{
+    
+    @include flexAlignment(space-evenly,center,row,wrap);
+    color:white;
+    font-size:20px;
+}
+.landing-description-box{
+    @include flexAlignment(flex-start, flex-start, column, wrap);
+}
+.landing-buttons{
+
+    @include flexAlignment(center,center,row,wrap);
+    .landing-button{
+        @include button(rgba(57, 82, 92, 0.2),white, 10px 10px, 20px 20px, 4px solid darkorange, bold);
+        border-radius: 16px;
+        font-size: 20px;
+        width:200px;
+        text-decoration: none;
+        text-align: center;
+        &:hover{
+            background-color: darkorange;
+        }
+    }
+}

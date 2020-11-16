@@ -1,0 +1,30 @@
+@import "../../_variables.scss";
+@import "../../_mixins.scss";
+
+.modal-add-to-cart{
+    
+    @include flexAlignment(flex-start,center,column,wrap);
+    margin: auto;
+    margin-top:100px;
+    background-color: $accent-color;
+    border:none;
+    height:45%;
+    width: 30%;
+    color:white;
+
+    .add-to-cart-modal-button{
+        @include button(rgb(76, 185, 76), $accent-color, 12px 12px, 14px 24px, none, bold);
+        font-size: 18px;
+        &:hover{
+            background-color:rgb(30, 196, 30);
+        }
+    }
+
+    .cancel-cart-modal-button{
+        @include button(rgb(233, 56, 56), $accent-color, 12px 12px, 14px 24px, none, bold);
+        font-size: 18px;
+        &:hover{
+            background-color:rgb(230, 17, 17);
+        }
+    }
+}
