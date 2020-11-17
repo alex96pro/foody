@@ -5,23 +5,36 @@
     
     @include flexAlignment(space-evenly,center,row,wrap);
     color:white;
-    font-size:20px;
-}
-.landing-description-box{
-    @include flexAlignment(flex-start, flex-start, column, wrap);
-}
-.landing-buttons{
+    font-size:2rem;
+    
+    .landing-description-box{
+        .check-mark-icon{
+            width:3rem;
+            height:3rem;
+        }
+    }
+    
+    .landing-buttons-box{
 
-    @include flexAlignment(center,center,row,wrap);
-    .landing-button{
-        @include button(rgba(57, 82, 92, 0.2),white, 10px 10px, 20px 20px, 4px solid darkorange, bold);
-        border-radius: 16px;
-        font-size: 20px;
-        width:200px;
-        text-decoration: none;
-        text-align: center;
-        &:hover{
-            background-color: darkorange;
+        @include flexAlignment(space-evenly,center,row,wrap);
+        .landing-button{
+            @include button(rgba(57, 82, 92, 0.1),white, 1rem 1rem, 2rem 2rem, 0.4rem solid rgba(235, 144, 33, 0.925), bold);
+            border-radius: 1.6rem;
+            font-size: 2rem;
+            text-decoration: none;
+            text-align: center;
+            width:17rem;
+            animation: glowing 4s infinite;
+            @keyframes glowing {
+                0% { box-shadow: 0rem 0rem -5rem rgb(230, 124, 38); }
+                40% { box-shadow: 0rem 0rem 4rem rgb(230, 124, 38); }
+                60% { box-shadow: 0rem 0rem 4rem rgb(230, 124, 38); }
+                100% { box-shadow: 0rem 0rem -5rem rgb(230, 124, 38); }
+              }
+            &:hover{
+                background-color: darkorange;
+            }
         }
     }
 }
+

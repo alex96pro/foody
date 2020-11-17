@@ -16,7 +16,7 @@ export default function cartReducer(state = initialState, action){
         case INCREASE_MEAL_AMOUNT_IN_CART:
             return{
                 ...state,
-                meals: state.meals.filter((mealWithAmount)=>{
+                meals: state.meals.filter((mealWithAmount) => {
                     if(mealWithAmount.meal.mealId === action.payload.id){
                         mealWithAmount.amount = +mealWithAmount.amount + +action.payload.amount;
                     }
@@ -26,7 +26,7 @@ export default function cartReducer(state = initialState, action){
         case REMOVE_MEAL_FROM_CART:
             return{
                 ...state,
-                meals: state.meals.filter((meal,index)=>index!==action.payload)
+                meals: state.meals.filter((meal,index) => index !== action.payload)
             }
         default:
             return state;

@@ -4,8 +4,9 @@
 .modal-rate-cook{
     
     @include flexAlignment(center,center,column,wrap);
+    font-size: 1.6rem;
     margin: auto;
-    margin-top:100px;
+    margin-top:10rem;
     background-color: $accent-color;
     border:none;
     height:45%;
@@ -13,16 +14,16 @@
     color:white;
 
     .modal-rate-cook-button{
-        @include button(rgb(76, 185, 76), $accent-color, 12px 12px, 14px 24px, none, bold);
-        font-size: 18px;
+        @include button(rgb(76, 185, 76), $accent-color, 1.2rem 1.2rem, 1.4rem 2.4rem, none, bold);
+        font-size: 1.8rem;
         &:hover{
             background-color:rgb(30, 196, 30);
         }
     }
     
     .modal-rate-cook-cancel-button{
-        @include button(rgb(233, 56, 56), $accent-color, 12px 12px, 14px 24px, none, bold);
-        font-size: 18px;
+        @include button(rgb(233, 56, 56), $accent-color, 1.2rem 1.2rem, 1.4rem 2.4rem, none, bold);
+        font-size: 1.8rem;
         &:hover{
             background-color:rgb(230, 17, 17);
         }

@@ -53,10 +53,10 @@ export function profileAPI(){
     return (dispatch) => {
         dispatch(loadingProfile());
         axios.get(`${BACKEND_API}/auth/profile`,{headers:{'Authorization':`Basic ${localStorage.getItem("loginToken")}`}})
-        .then(response =>{
+        .then(response => {
           dispatch(viewProfile(response.data));
         })
-        .catch(error =>{
+        .catch(error => {
             console.log(error);
         })
     }; 

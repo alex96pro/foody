@@ -4,17 +4,34 @@
 .sign-up{
 
     @include flexAlignment(center,center,column,wrap);
+    font-size: 1.6rem;
     color:$accent-color;
     font-weight: bold;
     &-label{
-        margin:6px 0px;
+        margin:0.6rem 0rem;
     }
 
     &-button{
-        @include button(darkorange, white, 8px 8px, 8px 8px, none, bold);
+        @include button(darkorange, white, 0rem 0rem, 1.6rem 1.8rem, none, bold);
+        margin-top:3rem;
+        font-size: 1.6rem;
         &:hover{
             background-color: $accent-color;
             color:white;
+        }
+    }
+    
+    .upload-photo-button{
+        padding: 0.4rem 0.4rem;
+        margin: 1rem 0rem;
+        background-color: inherit;
+        border: 0.2rem solid white;
+        width:10rem;
+        height:2rem;
+        font-size:1.4rem;
+        cursor:pointer;
+        &:hover{
+            border: 0.2rem solid $accent-color;
         }
     }
 }

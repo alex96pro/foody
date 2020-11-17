@@ -15,17 +15,17 @@ export default function CustomerMeals(){
     const mealsInCart = useSelector(state => state.cartReducer.meals);
     const loadingStatus = useSelector(state => state.customerReducer.loadingStatus);
     const dispatch = useDispatch();
-    const [state,setState] = useState({openModal:false,selectedMeal:{}});
+    const [state, setState] = useState({openModal:false,selectedMeal:{}});
 
-    const addToCart = (meal) =>{
+    const addToCart = (meal) => {
         setState({openModal:true,selectedMeal:meal})
     };
 
-    const cancelModal = () =>{
+    const cancelModal = () => {
         setState({openModal:false,selectedMeal:{}})
     };
 
-    const onSubmit = (data) =>{
+    const onSubmit = (data) => {
         let mealExistsInCart = false;
         let id;
         for(let i = 0; i < mealsInCart.length; i++){
@@ -46,7 +46,7 @@ export default function CustomerMeals(){
     return (
     <div>
         <NavBar isLoggedIn={true} role={localStorage.getItem("role")}/>
-        {loadingStatus?<div className = "spinner"><img src={Spinner} alt="Loading..." width="900px" height="600px"/></div>:
+        {loadingStatus?<div className="spinner"><img src={Spinner} alt="Loading..."/></div>:
         <div className="customer-meals">
             {meals.map(
                 meal =>
@@ -59,8 +59,8 @@ export default function CustomerMeals(){
                             <button onClick={() => addToCart(meal)} className="button-add-to-cart">Add to cart</button>
                         </div>
                     </div>
-                    <div>
-                        <img src={MealIcon} alt="Meal icon" width="40px" height="40px"/>
+                    <div className="meal-icon">
+                        <img src={MealIcon} alt="Meal icon"/>
                     </div>
                 </div>
             )}

@@ -2,7 +2,7 @@ import React from 'react';
 import {useForm} from 'react-hook-form';
 import './rateCook.modal.scss';
 import Modal from 'react-modal';
-Modal.setAppElement('#root'); //for modal error
+Modal.setAppElement('#root');
 
 export default function RateCookModal(props){
 

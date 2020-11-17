@@ -4,8 +4,9 @@
 .cart{
     
     @include flexAlignment(center,center,column,wrap);
-    margin:6px 6px;
-    padding:10px 10px;
+    font-size: 1.6rem;
+    margin:0.6rem 0.6rem;
+    padding:1rem 1rem;
 
     .meals-in-cart{
         @include flexAlignment(center,center,row,wrap);
@@ -14,8 +15,8 @@
     .cart-meal-details{
         @include flexAlignment(center,center,column,nowrap);
         background-color: rgba(218, 221, 224, 0.8);
-        margin: 4px 4px;
-        padding: 10px 10px;
+        margin: 0.4rem 0.4rem;
+        padding: 1rem 1rem;
     }
 
     .cart-header{
@@ -24,7 +25,7 @@
     }
 
     .remove-from-cart-button{
-        @include button(rgb(230, 59, 59),white,4px 4px, 8px 8px, none, bold);
+        @include button(rgb(230, 59, 59),white,0.4rem 0.4rem, 0.8rem 0.8rem, none, bold);
         &:hover{
             background-color: $accent-color;
             color:white;
@@ -32,12 +33,12 @@
     }
 
     .cart-price{
-        font-size: 20px;
+        font-size: 2rem;
         color:$accent-color;
     }
 
     .checkout-button{
-        @include button(rgb(46, 165, 46),white,16px 16px, 16px 16px, none, none);
-        font-size: 18px;
+        @include button(rgb(46, 165, 46),white,1.6rem 1.6rem, 1.6rem 1.6rem, none, none);
+        font-size: 1.8rem;
     }
 }

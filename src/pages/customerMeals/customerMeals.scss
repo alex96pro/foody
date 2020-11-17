@@ -3,11 +3,12 @@
 
 .customer-meals{
     @include flexAlignment(center,center,column,wrap);
-    margin:6px 6px;
-    padding:10px 10px;
+    font-size: 1.6rem;
+    margin:0.6rem 0.6rem;
+    padding:1rem 1rem;
 
     &-button{
-        @include button($accent-color, white, 4px 4px, 4px 4px, none, bold);
+        @include button($accent-color, white, 0.4rem 0.4rem, 0.4rem 0.4rem, none, bold);
         &:hover{
             background-color: darkorange;
         }
@@ -17,12 +18,12 @@
         @include flexAlignment(space-between,center,row,nowrap);
         width:50%;
         background-color: rgba(218, 221, 224, 0.8);
-        margin: 4px 4px;
-        padding: 10px 10px;
+        margin: 0.4rem 0.4rem;
+        padding: 1rem 1rem;
     }
 
     .button-add-to-cart{
-        @include button($accent-color, white, 2px 2px, 4px 4px, none, bold);
+        @include button($accent-color, white, 0.2rem 0.2rem, 0.4rem 0.4rem, none, bold);
         &:hover{
             background-color: darkorange;
         }
@@ -31,12 +32,17 @@
     .meal-name{
         color:$accent-color;
         font-weight: bold;
-        font-size:20px;
-        margin-bottom: 6px;
+        font-size:2rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .meal-icon{
+        width:40px;
+        height: 40px;
     }
 
     .cart-price{
-        font-size: 20px;
+        font-size: 2rem;
         color:$accent-color;
     }
 }
