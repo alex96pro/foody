@@ -37,6 +37,11 @@
         color:$accent-color;
     }
 
+    .cart-meal-icon{
+        width:4rem;
+        height:4rem;
+    }
+
     .checkout-button{
         @include button(rgb(46, 165, 46),white,1.6rem 1.6rem, 1.6rem 1.6rem, none, none);
         font-size: 1.8rem;

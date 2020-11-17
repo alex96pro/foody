@@ -59,8 +59,8 @@ export default function CustomerMeals(){
                             <button onClick={() => addToCart(meal)} className="button-add-to-cart">Add to cart</button>
                         </div>
                     </div>
-                    <div className="meal-icon">
-                        <img src={MealIcon} alt="Meal icon"/>
+                    <div>
+                        <img src={MealIcon} className="meal-icon" alt="Meal icon"/>
                     </div>
                 </div>
             )}

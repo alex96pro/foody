@@ -39,7 +39,7 @@ export default function Cart(){
                             <div className="cart-price">Price:{mealWithAmount.amount * mealWithAmount.meal.price}{CURRENCY}</div>
                         </div>
                         <div>
-                            <img src={MealIcon} alt="Meal icon" width="40px" height="40px"/>
+                            <img src={MealIcon} className="cart-meal-icon" alt="Meal icon"/>
                         </div>
                         <div>
                             <button className="remove-from-cart-button" onClick={() => remove(index)}>Remove</button>

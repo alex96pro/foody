@@ -33,6 +33,11 @@
         100% {left:0rem;}
     }
 
+    .cook-profile-photo{
+        width:4rem;
+        height:4rem;
+    }
+
     .rate-button{
         @include button(darkorange,$accent-color,0.4rem 0.4rem, 0.4rem 0.4rem, none, bold);
         &:hover{

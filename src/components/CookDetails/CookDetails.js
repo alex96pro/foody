@@ -33,7 +33,7 @@ export default function CookDetails(props){
       <div className="cook-details">
         {props.cooks.map(cook => 
           <div key={cook.userId} className="wrapper animate-cook-details">
-              <img src={Avatar} width="30px" height="30px" alt="Avatar"/>
+              <img src={Avatar} className="cook-profile-photo" alt="Avatar"/>
               <div>Fullname:</div>
                 {cook.fullname}
               <div>Rating:</div>
