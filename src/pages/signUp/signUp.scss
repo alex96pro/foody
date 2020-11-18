@@ -12,7 +12,7 @@
     }
 
     &-button{
-        @include button(darkorange, white, 0rem 0rem, 1.6rem 1.8rem, none, bold);
+        @include button($accent-color-2, white, 0rem 0rem, 1.6rem 1.8rem, none, bold);
         margin-top:3rem;
         font-size: 1.6rem;
         &:hover{

@@ -10,7 +10,7 @@
     &-button{
         @include button($accent-color, white, 0.4rem 0.4rem, 0.4rem 0.4rem, none, bold);
         &:hover{
-            background-color: darkorange;
+            background-color: $accent-color-2;
         }
     }
 
@@ -25,7 +25,7 @@
     .button-add-to-cart{
         @include button($accent-color, white, 0.2rem 0.2rem, 0.4rem 0.4rem, none, bold);
         &:hover{
-            background-color: darkorange;
+            background-color: $accent-color-2;
         }
     }
     
@@ -48,11 +48,11 @@
         @include button($accent-color, white, 0.8rem 0.8rem, 0.4rem 0.8rem, none, bold);
         font-size:2rem;
         &:hover{
-            background-color: darkorange;
+            background-color: $accent-color-2;
             color:$accent-color;
         }
         &.active{
-            background-color: darkorange;
+            background-color: $accent-color-2;
             color:$accent-color;
         }
     }

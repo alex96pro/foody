@@ -11,7 +11,7 @@
     &-button{
         @include button($accent-color, white, 0.8rem 0.8rem, 0.8rem 0.8rem, none, bold);
         &:hover{
-            background-color: darkorange;
+            background-color: $accent-color-2;
         }
     }
 
@@ -39,7 +39,7 @@
     }
 
     .rate-button{
-        @include button(darkorange,$accent-color,0.4rem 0.4rem, 0.4rem 0.4rem, none, bold);
+        @include button($accent-color-2,$accent-color,0.4rem 0.4rem, 0.4rem 0.4rem, none, bold);
         &:hover{
             background-color: $accent-color;
             color:white;

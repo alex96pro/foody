@@ -13,7 +13,7 @@
     }
     
     .login-button{
-        @include button(darkorange, white, 1rem 0rem, 1.2rem 1.8rem, none, bold);
+        @include button($accent-color-2, white, 1rem 0rem, 1.2rem 1.8rem, none, bold);
         font-size: 1.5rem;
         &:hover{
             background-color: $accent-color;
