@@ -1,11 +1,13 @@
 import customerReducer from './customer.reducer';
 import profileReducer from './profile.reducer';
 import cartReducer from './cart.reducer';
+import uiReducer from './ui.reducer';
 import {combineReducers} from 'redux';
 import {LOGOUT} from '../actions/profile.actions';
 
 const allReducers = combineReducers(
     {
+        uiReducer,
         customerReducer,
         profileReducer,
         cartReducer

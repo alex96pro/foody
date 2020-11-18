@@ -20,3 +20,25 @@
     }
 }
 
+.cooks-page-numbers{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width:20rem;
+    background-color: rgba(218, 221, 224, 0.8);
+
+}
+.cooks-page-number{
+    @include button($accent-color, white, 0.8rem 0.8rem, 0.4rem 0.8rem, none, bold);
+    font-size:2rem;
+    &:hover{
+        background-color: darkorange;
+        color:$accent-color;
+    }
+    &.active{
+        background-color: darkorange;
+        color:$accent-color;
+    }
+}
+

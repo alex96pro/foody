@@ -12,8 +12,8 @@ export default function CookDetails(props){
     const dispatch = useDispatch();
     const [state,setState] = useState({openModal:false, selectedCook:{}})
 
-    const showMeals = (userId) => {
-      dispatch(getMealsAPI(userId));
+    const showMeals = (cookId) => {
+      dispatch(getMealsAPI(cookId));
     };
 
     const onSubmitRating = (data) => {

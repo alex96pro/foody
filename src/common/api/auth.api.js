@@ -7,32 +7,32 @@ export const INCORRECT_INPUT = "INCORRECT_INPUT";
 export const REGISTERED = "REGISTERED";
 export const EMAIL_EXISTS = "EMAIL_EXISTS";
 
-export function loginAPI(data, afterLogin){
-    axios.post(`${BACKEND_API}/auth/login`,{email:data.email, password:data.password})
-      .then(response => {
-        if(response.data !== null){
-            localStorage.setItem("loginToken", response.data.accessToken);
-            localStorage.setItem("email", response.data.email);
-            localStorage.setItem("userId", response.data.userId);
-            if(response.data.userType === "Cook"){
-              localStorage.setItem("role","COOK");
-              afterLogin(COOK);
-            }else{
-              localStorage.setItem("role","CUSTOMER");
-              afterLogin(CUSTOMER);
-            }
+export async function loginAPI(data, afterLogin){
+    try{
+      let response = await axios.post(`${BACKEND_API}/auth/login`,{email:data.email, password:data.password});
+      if(response.data !== null){
+        localStorage.setItem("loginToken", response.data.accessToken);
+        localStorage.setItem("email", response.data.email);
+        localStorage.setItem("userId", response.data.userId);
+        if(response.data.userType === "Cook"){
+          localStorage.setItem("role","COOK");
+          afterLogin(COOK);
         }else{
-            afterLogin(INCORRECT_INPUT);
+          localStorage.setItem("role","CUSTOMER");
+          afterLogin(CUSTOMER);
         }
-      })
-      .catch(error => {
-          console.log(error);
-      })
+      }else{
+          afterLogin(INCORRECT_INPUT);
+      }
+    }catch(err){
+      console.log(err);
+    }
 };
 
-export function signUpAPI(data, signUpType, afterSignUp){
-    axios.post(`${BACKEND_API}/auth/register`,{email:data.email, fullname:data.fullname, password:data.password, location:data.location, userType:signUpType})
-      .then(response =>{
+export async function signUpAPI(data, signUpType, afterSignUp){
+    try{
+      let response = await axios.post(`${BACKEND_API}/auth/register`,
+      {email:data.email, fullname:data.fullname, password:data.password, location:data.location, userType:signUpType});
         switch(response.data){
           case "Registered":
             afterSignUp(REGISTERED);
@@ -43,21 +43,20 @@ export function signUpAPI(data, signUpType, afterSignUp){
           default:
             afterSignUp("ERROR");
         }
-      })
-      .catch(error =>{
-        console.log(error);
-      })
+    }catch(err){
+      console.log(err);
+    }
 };
 
 export function profileAPI(){
-    return (dispatch) => {
+    return async (dispatch) => {
+      try{
         dispatch(loadingProfile());
-        axios.get(`${BACKEND_API}/auth/profile`,{headers:{'Authorization':`Basic ${localStorage.getItem("loginToken")}`}})
-        .then(response => {
-          dispatch(viewProfile(response.data));
-        })
-        .catch(error => {
-            console.log(error);
-        })
-    }; 
+        let response = await axios.get(`${BACKEND_API}/auth/profile`,
+        {headers:{'Authorization':`Basic ${localStorage.getItem("loginToken")}`}})
+        dispatch(viewProfile(response.data));
+      }catch(err){
+        console.log(err);
+      }
+    };  
 };

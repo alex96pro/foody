@@ -4,7 +4,11 @@ const initialState = {
     cooks:[],
     meals:[],
     loadingStatus:false,
-    message:''
+    message:'',
+    selectedCookId:'',
+    searchedLocation:'',
+    pagesCooks:[],
+    pagesMeals:[],
 };
 
 export default function customerReducer(state = initialState, action){
@@ -12,8 +16,10 @@ export default function customerReducer(state = initialState, action){
         case PUT_COOKS_IN_STORE:
             return {
                 ...state,
-                cooks:action.payload,
+                cooks:action.payload.cooks,
                 loadingStatus:false,
+                pagesCooks:action.payload.pages?action.payload.pages:state.pagesCooks,
+                searchedLocation:action.payload.searchedLocation,
                 message:''
             }
         case SET_LOADING_STATUS_COOKS:
@@ -31,9 +37,11 @@ export default function customerReducer(state = initialState, action){
         case PUT_SELECTED_MEALS_IN_STORE:
             return {
                 ...state,
-                meals:action.payload,
+                meals:action.payload.meals,
                 loadingStatus:false,
-                message:''
+                message:'',
+                selectedCookId:action.payload.cookId,
+                pagesMeals:action.payload.pages?action.payload.pages:state.pagesMeals
             }
         case SET_LOADING_STATUS_MEALS:
             return {

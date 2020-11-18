@@ -8,12 +8,16 @@ import {putMealInCart, increaseMealAmountInCart} from '../../common/actions/cart
 import Spinner from '../../images/spinner.gif';
 import {CURRENCY} from '../../consts';
 import AddMealToCartModal from './addMealToCart.modal';
+import {changeMealsPageAPI} from '../../common/api/customer.api';
+import Paging from '../../components/Paging/paging';
 
 export default function CustomerMeals(){
 
     const meals = useSelector(state => state.customerReducer.meals);
     const mealsInCart = useSelector(state => state.cartReducer.meals);
     const loadingStatus = useSelector(state => state.customerReducer.loadingStatus);
+    const pages = useSelector(state => state.customerReducer.pagesMeals);
+    const selectedCookId = useSelector(state => state.customerReducer.selectedCookId);
     const dispatch = useDispatch();
     const [state, setState] = useState({openModal:false,selectedMeal:{}});
 
@@ -23,6 +27,10 @@ export default function CustomerMeals(){
 
     const cancelModal = () => {
         setState({openModal:false,selectedMeal:{}})
+    };
+    
+    const changePage = (page) => {
+        dispatch(changeMealsPageAPI(page, selectedCookId));
     };
 
     const onSubmit = (data) => {
@@ -41,7 +49,7 @@ export default function CustomerMeals(){
             dispatch(putMealInCart({meal:state.selectedMeal, amount:data.amount})); 
         }
         setState({openModal:false, selectedMeal:{}})
-    }
+    };
 
     return (
     <div>
@@ -64,7 +72,9 @@ export default function CustomerMeals(){
                     </div>
                 </div>
             )}
+            {pages.length > 1 && <Paging pages={pages} changePage={changePage} type="currentPageCustomerMeals"/>}
         </div>}
+
         {state.openModal && 
         <AddMealToCartModal 
             openModal={state.openModal} 

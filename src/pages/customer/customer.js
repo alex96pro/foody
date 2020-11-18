@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form';
 import { useDispatch,useSelector } from 'react-redux';
 import {getCooksAPI} from '../../common/api/customer.api';
 import Spinner from '../../images/spinner.gif';
+import {changeCooksPageAPI} from '../../common/api/customer.api';
+import Paging from '../../components/Paging/paging';
 
 export default function Customer(){
 
@@ -13,10 +15,16 @@ export default function Customer(){
     const dispatch = useDispatch();
     const cooks = useSelector(state => state.customerReducer.cooks);
     const message = useSelector(state => state.customerReducer.message);
+    const pages = useSelector(state => state.customerReducer.pagesCooks);
     const loadingStatus = useSelector(state => state.customerReducer.loadingStatus);
+    const searchedLocation = useSelector(state => state.customerReducer.searchedLocation);
 
     const searchByLocation = (data) => {
-        dispatch(getCooksAPI(data));
+      dispatch(getCooksAPI(data));
+    };
+
+    const changePage = (page) => {
+      dispatch(changeCooksPageAPI(page, searchedLocation));
     };
 
     return (
@@ -37,9 +45,12 @@ export default function Customer(){
             </form>
             <div className="message-danger">{message}</div>
           </div>
+          {loadingStatus?<div className="spinner"><img src={Spinner} alt="Loading..."/></div>:
+          <CookDetails cooks={cooks}/>}
+
+        {pages.length > 1 && <Paging pages={pages} changePage={changePage} type="currentPageCustomerCooks"/>}
+        
         </div>
-        {loadingStatus?<div className="spinner"><img src={Spinner} alt="Loading..."/></div>:
-        <CookDetails cooks={cooks}/>}
       </div>
     );
 };
