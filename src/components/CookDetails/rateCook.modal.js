@@ -2,7 +2,7 @@ import React from 'react';
 import {useForm} from 'react-hook-form';
 import './rateCook.modal.scss';
 import Modal from 'react-modal';
-Modal.setAppElement('#root');
+Modal.setAppElement('#root'); //for modal error
 
 export default function RateCookModal(props){
 
@@ -10,23 +10,29 @@ export default function RateCookModal(props){
 
     return (
         <Modal isOpen={props.openModal} onRequestClose={props.cancelRatingModal} className="modal-rate-cook">
-              <div><h2>{props.selectedCook.fullname}</h2></div>
-                <form onSubmit={handleSubmit(props.onSubmitRating)}>
-                  <div>Rating (1 to 5)</div>
-                    <select name="rating" ref={register()}>
-                      <option value="5">5</option>
-                      <option value="4">4</option>  
-                      <option value="3">3</option>
-                      <option value="2">2</option>
-                      <option value="1">1</option>
-                    </select>
-                    {errors.rating && <p>Rating is required</p>}
-                  <div>Description</div>
-                  <textarea name="description" ref={register()}/>
-                  <button className="modal-rate-cook-cancel-button" onClick={props.cancelRatingModal}>Cancel</button>
-                  <button type="submit" className="modal-rate-cook-button">Rate</button>
-                </form>
-        </Modal>    
+          <div className="modal-rate-cook-header">
+            {props.selectedCook.fullname}
+          </div>
+          <form onSubmit={handleSubmit(props.onSubmitRating)}>
+              <div className="modal-rate-cook-body">
+                        Rating
+                        <select name="rating" ref={register()}>
+                          <option value="5">5</option>
+                          <option value="4">4</option>  
+                          <option value="3">3</option>
+                          <option value="2">2</option>
+                          <option value="1">1</option>
+                        </select>
+                        {errors.rating && <p>Rating is required</p>}
+                      <div>Description</div>
+                      <textarea name="description" ref={register()}/>
+              </div>
+              <div className="modal-rate-cook-footer">
+                    <button className="modal-rate-cook-button">Rate</button>
+                    <button onClick={props.cancelRatingModal} className="modal-rate-cook-cancel-button">Cancel</button>
+              </div>
+          </form>     
+         </Modal>  
     );
 };
 

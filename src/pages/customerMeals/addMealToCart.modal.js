@@ -11,15 +11,19 @@ export default function AddMealToCartModal(props){
     return(
         <Modal isOpen={props.openModal} onRequestClose={props.cancelModal} className="modal-add-to-cart">
             <form onSubmit={handleSubmit(props.onSubmit)}>
-                <div><h2>{props.selectedMeal.name}</h2></div>
-                <div>Amount</div>
-                <input type="number" defaultValue="1" name="amount" ref={register()}></input>
-                {errors.amount && <p>Amount is required</p>}
-                <div>Aditional info</div>
-                <textarea></textarea>
-                <div>
-                    <button type="submit" className="add-to-cart-modal-button">Add</button>
-                    <button className="cancel-cart-modal-button" onClick={props.cancelModal}>Cancel</button>
+                <div className="modal-add-to-cart-header">
+                    {props.selectedMeal.name}
+                </div>
+                <div className="modal-add-to-cart-body">
+                    Amount
+                    <input type="number" defaultValue="1" name="amount" ref={register()}></input>
+                    {errors.amount && <p>Amount is required</p>}
+                    <div>Aditional info</div>
+                    <textarea></textarea>
+                </div>
+                <div className="modal-add-to-cart-footer">
+                     <button type="submit" className="modal-add-to-cart-button">Add</button>
+                    <button className="modal-add-to-cart-cancel-button" onClick={props.cancelModal}>Cancel</button>
                 </div>
             </form>
         </Modal>

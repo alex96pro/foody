@@ -21,7 +21,7 @@ export default function Cart(){
             <NavBar isLoggedIn={true} role={localStorage.getItem("role")}/>
             <div className="cart">
                 <div className="cart-header">
-                    {meals.length?<h1>Meals in your cart</h1>:<div>
+                    {meals.length > 0?<h1>Meals in your cart</h1>:<div>
                     <h1>You don't have any meals in your cart</h1>
                     <Link to="/customer"><button className="main-button">Find Cooks</button></Link></div>}
                 </div>
@@ -47,7 +47,7 @@ export default function Cart(){
                     </div>
                 )}
                 </div>
-                {meals.length &&
+                {meals.length > 0 &&
                 <div className="cart-checkout">
                     <button className="checkout-button">Checkout{' '}
                     {(meals.reduce((sum,current) => sum + current.meal.price * current.amount, 0)).toFixed(2)}{CURRENCY}

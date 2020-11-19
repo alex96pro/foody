@@ -12,10 +12,10 @@ export default function Landing(){
         <div className="landing">
           <div className="landing-description-box">
             <h1>Welcome to Foody!</h1>
-            <h2>The place where food preparation is transparent</h2>
-            <h3><img src={CheckMarkIcon} alt="check mark" className="check-mark-icon"></img>See detailed ingredients of every meal</h3>
-            <h3><img src={CheckMarkIcon} alt="check mark" className="check-mark-icon"></img>Watch cook process</h3>
-            <h3><img src={CheckMarkIcon} alt="check mark" className="check-mark-icon"></img>Order instantly or subscribe for program</h3>
+              <h2>The place where food preparation is transparent</h2>
+                <div className="punchline"><img src={CheckMarkIcon} alt="check mark" className="check-mark-icon"></img>See detailed ingredients of every meal</div>
+                <div className="punchline"><img src={CheckMarkIcon} alt="check mark" className="check-mark-icon"></img>Watch cook process</div>
+                <div className="punchline"><img src={CheckMarkIcon} alt="check mark" className="check-mark-icon"></img>Order instantly or subscribe for program</div>
           </div>
           <div className="landing-buttons-box">
             <Link className="landing-button" to={{ pathname: '/sign-up', state: { role: 'Customer'} }}>I want to eat</Link>
