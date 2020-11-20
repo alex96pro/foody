@@ -64,7 +64,7 @@ export default function CustomerMeals(){
                         <div>{meal.description}</div>
                         <div className="cart-price">{meal.price}{CURRENCY}</div>
                         <div> 
-                            <button onClick={() => addToCart(meal)} className="button no-left-margin">Add to cart</button>
+                            <button onClick={() => addToCart(meal)} className="button-main no-left-margin">Add to cart</button>
                         </div>
                     </div>
                     <div>
