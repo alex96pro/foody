@@ -23,7 +23,7 @@ export default function Cart(){
                 <div className="cart-header">
                     {meals.length > 0?<h1>Meals in your cart</h1>:<div>
                     <h1>You don't have any meals in your cart</h1>
-                    <Link to="/customer"><button className="main-button">Find Cooks</button></Link></div>}
+                    <Link to="/customer"><button className="button-main">Find Cooks</button></Link></div>}
                 </div>
                 <div className="meals-in-cart">
                 {meals.map(

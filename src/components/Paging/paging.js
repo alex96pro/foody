@@ -10,6 +10,8 @@ export default function Paging(props){
                 return state.uiReducer.currentPageCustomerCooks;
             case 'currentPageCustomerMeals':
                 return state.uiReducer.currentPageCustomerMeals;
+            case 'currentPageCookMeals':
+                return state.uiReducer.currentPageCookMeals;
             default: return 1;
         }   
     });

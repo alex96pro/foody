@@ -42,7 +42,7 @@ export default function CookDetails(props){
                 {cook.location}
               <div>
                 <Link to="/customerMeals" >
-                    <button className="cook-details-button" onClick={() => showMeals(cook.userId)}>Show meals</button>
+                    <button className="button-main" onClick={() => showMeals(cook.userId)}>Show meals</button>
                 </Link>
               </div>
           </div>)}

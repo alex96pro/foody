@@ -41,7 +41,7 @@ export default function Customer(){
               ref={register({required:true})}
               />
               {errors.address && <p>Address is required</p>}
-              <button type="submit" className="customer-button">Search</button>
+              <button type="submit" className="button-main">Search</button>
             </form>
             <div className="message-danger">{message}</div>
           </div>

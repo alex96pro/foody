@@ -1,4 +1,5 @@
 import customerReducer from './customer.reducer';
+import cookReducer from './cook.reducer';
 import profileReducer from './profile.reducer';
 import cartReducer from './cart.reducer';
 import uiReducer from './ui.reducer';
@@ -9,6 +10,7 @@ const allReducers = combineReducers(
     {
         uiReducer,
         customerReducer,
+        cookReducer,
         profileReducer,
         cartReducer
     }

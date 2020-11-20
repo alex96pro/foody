@@ -38,7 +38,7 @@
     }
     
     .modal-add-to-cart-cancel-button{
-        @include button(rgb(233, 58, 58), white, 1.2rem 1.2rem, 1.2rem 2.2rem, none, bold);
+        @include button($danger-color, white, 1.2rem 1.2rem, 1.2rem 2.2rem, none, bold);
         font-size: 1.8rem;
     }
 }

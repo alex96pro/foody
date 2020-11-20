@@ -12,6 +12,33 @@ html, body{
   background-size: cover;
 }
 
+.button{
+
+  &-main{
+    background-color: $accent-color;
+    color: white;
+    margin: 0.8rem 0.8rem;
+    padding: 1.2rem 1.2rem;
+    border: none;
+    font-weight: bold;
+    border-radius: 1.2rem;
+    font-size: 1.8rem;
+    cursor:pointer;
+    outline:none;
+    &:hover{
+      background-color: $accent-color-2;
+    }
+  }
+
+  &-small{
+    @extend .button-main;
+    margin:0.2rem 0.2rem;
+    padding: 0.6rem 0.6rem;
+    font-size:1.4rem;
+    font-weight: normal;
+  }
+}
+
 .wrapper{
   padding:2rem 2rem;
   margin:2rem 2rem;
@@ -24,17 +51,8 @@ html, body{
   font-weight: bold;
 }
 
-.main-button{
-  background-color: $accent-color;
-  color: white;
-  margin: 0.4rem 0.4rem;
-  padding: 0.8rem 0.8rem;
-  border: none;
-  font-weight: bold;
-  cursor:pointer;
-  &:hover{
-    background-color: $accent-color-2;
-  }
+.no-left-margin{
+  margin-left:0rem;
 }
 
 input[type=number]{

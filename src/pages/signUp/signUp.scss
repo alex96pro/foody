@@ -10,16 +10,6 @@
     &-label{
         margin:0.6rem 0rem;
     }
-
-    &-button{
-        @include button($accent-color-2, white, 0rem 0rem, 1.6rem 1.8rem, none, bold);
-        margin-top:3rem;
-        font-size: 1.6rem;
-        &:hover{
-            background-color: $accent-color;
-            color:white;
-        }
-    }
     
     .upload-photo-button{
         padding: 0.4rem 0.4rem;

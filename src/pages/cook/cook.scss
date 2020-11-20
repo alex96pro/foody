@@ -1,0 +1,35 @@
+@import "../../_variables.scss";
+@import "../../_mixins.scss";
+.cook{
+    @include flexAlignment(center,center,column,wrap);
+    font-size:2rem;
+    .cook-nav{
+        @include flexAlignment(center,center,row,wrap);
+    }
+    .cook-meals{
+        @include flexAlignment(center,center,column,wrap);
+    }
+    &-meal-name{
+        color:$accent-color;
+        font-size: 2.2rem;
+    }
+    &-meal-description{
+        color:black;
+        font-size:1.8rem;
+    }
+    &-meal-price{
+        color:$accent-color-2;
+        font-size:1.8rem;
+    }
+    .cook-meal{
+        font-size: 2rem;
+        background-color: lightgray;
+        margin:1rem 1rem;
+        padding:1.2rem 1.2rem;
+        width:50vw;
+    }
+    h1{
+        font-size:4rem;
+        color:white;
+    }
+}
