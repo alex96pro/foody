@@ -14,7 +14,6 @@ export default function Customer(){
     const {register, handleSubmit, errors} = useForm();
     const dispatch = useDispatch();
     const cooks = useSelector(state => state.customerReducer.cooks);
-    const message = useSelector(state => state.customerReducer.message);
     const pages = useSelector(state => state.customerReducer.pagesCooks);
     const loadingStatus = useSelector(state => state.customerReducer.loadingStatus);
     const searchedLocation = useSelector(state => state.customerReducer.searchedLocation);
@@ -43,7 +42,6 @@ export default function Customer(){
               {errors.address && <p>Address is required</p>}
               <button type="submit" className="button-main">Search</button>
             </form>
-            <div className="message-danger">{message}</div>
           </div>
           {loadingStatus?<div className="spinner"><img src={Spinner} alt="Loading..."/></div>:
           <CookDetails cooks={cooks}/>}

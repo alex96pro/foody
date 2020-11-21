@@ -4,7 +4,6 @@
 .cart{
     
     @include flexAlignment(center,center,column,wrap);
-    font-size: 1.6rem;
     margin:0.6rem 0.6rem;
     padding:1rem 1rem;
 
@@ -14,14 +13,17 @@
 
     .cart-meal-details{
         @include flexAlignment(center,center,column,nowrap);
+        font-size: 2rem;
         background-color: rgba(218, 221, 224, 0.8);
         margin: 0.4rem 0.4rem;
         padding: 1rem 1rem;
+        width:10vw;
     }
 
     .cart-header{
         color:white;
         text-align: center;
+        font-size: 1.6rem;
     }
 
     .remove-from-cart-button{
@@ -30,11 +32,6 @@
             background-color: $accent-color;
             color:white;
         }
-    }
-
-    .cart-price{
-        font-size: 2rem;
-        color:$accent-color;
     }
 
     .cart-meal-icon{

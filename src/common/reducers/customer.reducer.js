@@ -4,7 +4,6 @@ const initialState = {
     cooks:[],
     meals:[],
     loadingStatus:false,
-    message:'',
     selectedCookId:'',
     searchedLocation:'',
     pagesCooks:[],
@@ -20,26 +19,22 @@ export default function customerReducer(state = initialState, action){
                 loadingStatus:false,
                 pagesCooks:action.payload.pages?action.payload.pages:state.pagesCooks,
                 searchedLocation:action.payload.searchedLocation,
-                message:''
             }
         case SET_LOADING_STATUS_COOKS:
             return {
                 ...state,
                 loadingStatus:true,
-                message:''
             }
         case NO_COOKS_ON_LOCATION:
             return {
                 ...state,
                 loadingStatus:false,
-                message:'No cooks on location '+action.payload
             }
         case PUT_SELECTED_MEALS_IN_STORE:
             return {
                 ...state,
                 meals:action.payload.meals,
                 loadingStatus:false,
-                message:'',
                 selectedCookId:action.payload.cookId,
                 pagesMeals:action.payload.pages?action.payload.pages:state.pagesMeals
             }
