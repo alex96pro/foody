@@ -1,0 +1,30 @@
+@import "../../_variables.scss";
+
+// .Toastify__toast-container {
+//   
+//  }
+.Toastify__toast--default {
+    background: #fff;
+    color: #aaa;
+    font-size: 1.8rem;
+}
+
+.Toastify__toast--info {
+    background: $accent-color-2;
+    font-size: 1.8rem;
+}
+
+.Toastify__toast--success {
+    background: #07bc0c;
+    font-size: 1.8rem;
+}
+
+.Toastify__toast--warning {
+    background: #f1c40f;
+    font-size: 1.8rem;
+}
+
+.Toastify__toast--error {
+    background: $danger-color;
+    font-size: 1.8rem;
+}
