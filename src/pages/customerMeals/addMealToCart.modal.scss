@@ -34,11 +34,13 @@
 
     .modal-add-to-cart-button{
         @include button($accent-color, white, 1.2rem 1.2rem, 1.2rem 2.2rem, none, bold);
+        outline:none;
         font-size: 1.8rem;
     }
     
     .modal-add-to-cart-cancel-button{
         @include button($danger-color, white, 1.2rem 1.2rem, 1.2rem 2.2rem, none, bold);
+        outline:none;
         font-size: 1.8rem;
     }
 }

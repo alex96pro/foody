@@ -1,7 +1,7 @@
 @import "../../_variables.scss";
 @import "../../_mixins.scss";
 
-.modal-rate-cook{
+.confirm-modal{
     
     font-size: 1.6rem;
     background-color: rgb(247, 247, 247);
@@ -29,13 +29,13 @@
         @include flexAlignment(flex-end,flex-end,row,wrap);
     }
 
-    .modal-rate-cook-button{
+    &-button{
         @include button($accent-color, white, 1.2rem 1.2rem, 1.2rem 2.2rem, none, bold);
         outline:none;
         font-size: 1.8rem;
     }
     
-    .modal-rate-cook-cancel-button{
+    &-cancel{
         @include button($danger-color, white, 1.2rem 1.2rem, 1.2rem 2.2rem, none, bold);
         outline:none;
         font-size: 1.8rem;

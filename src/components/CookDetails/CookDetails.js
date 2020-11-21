@@ -10,7 +10,7 @@ import RateCookModal from './rateCook.modal';
 export default function CookDetails(props){
     
     const dispatch = useDispatch();
-    const [state,setState] = useState({openModal:false, selectedCook:{}})
+    const [state,setState] = useState({openModal:false, selectedCook:{}});
 
     const showMeals = (cookId) => {
       dispatch(getMealsAPI(cookId));

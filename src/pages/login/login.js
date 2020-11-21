@@ -52,7 +52,7 @@ export default function Login(props){
                   ref={register({required:true})}
                 />
                 {errors.password && <p>Password is required</p>}
-                <div><button type="submit" className="button-main">Log In</button></div>
+                <div><button className="button-main">Log In</button></div>
             </form>
             <div className="message-danger">{state.message}</div>
           </div>

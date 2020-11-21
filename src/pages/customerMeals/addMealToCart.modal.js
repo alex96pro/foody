@@ -22,7 +22,7 @@ export default function AddMealToCartModal(props){
                     <textarea></textarea>
                 </div>
                 <div className="modal-add-to-cart-footer">
-                     <button type="submit" className="modal-add-to-cart-button">Add</button>
+                    <button type="submit" className="modal-add-to-cart-button">Add</button>
                     <button className="modal-add-to-cart-cancel-button" onClick={props.cancelModal}>Cancel</button>
                 </div>
             </form>

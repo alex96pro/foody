@@ -20,6 +20,7 @@ export function getMealsAPI(cookId){
       }
     };
 };
+
 export function changePageCookMealsAPI(cookId, page){
     return async (dispatch) => {
       try{
@@ -31,4 +32,31 @@ export function changePageCookMealsAPI(cookId, page){
         console.log(err);
       }
     }
+};
+
+export function editMealAPI(data, mealId, currentPage){
+  return async (dispatch) => {
+    try{
+      let editResponse = await axios.post(`${BACKEND_API}/cook/editMeal/${mealId}`,{meal:data});
+      if(editResponse.data === "EDITED"){
+        alert("successfuly edited meal");
+        let updateResponse = await axios.get(`${BACKEND_API}/cook/getMealsOnPage/${localStorage.getItem("userId")}/${currentPage}`);
+        dispatch(showMeals({meals:updateResponse.data}));
+      }else{
+        alert("error on server");
+      }
+    }catch(err){
+      console.log(err);
+    }   
+  };
+};
+
+export function deleteMealAPI(mealId){
+    // return async (dispatch) => {
+    //   try{
+    //     
+    //   }catch(err){
+    //     console.log(err);
+    //   }
+    // };
 };
