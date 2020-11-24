@@ -7,7 +7,7 @@
     background-color: rgb(230, 230, 230);
     border:none;
     color:white;
-    width:max-content;
+    width: max-content;
     margin:auto;
     margin-top:20vh;
     &-header{
@@ -16,6 +16,7 @@
         padding:1rem 1rem;
     }
     &-body{
+        @include flexAlignment(center,flex-start,column,wrap);
         color:$accent-color;
         margin:1rem 1rem;
         font-size:1.8rem;
@@ -43,14 +44,16 @@
     }
 
     .meal-tags{
-        @include flexAlignment(flex-start,center,row,wrap);
-        overflow: hidden;
+        @include flexAlignment(center,flex-start,column,wrap);
         font-size:1.6rem;
     }
 
+    .add-tag{
+        @include flexAlignment(flex-start,center,row,wrap);
+    }
+    
     .meal-tag{
         @include flexAlignment(flex-start,center,row,wrap);
-        
         margin-right:0.4rem;
         margin-top:0.2rem;
         margin-bottom:0.2rem;
@@ -77,7 +80,7 @@
         background-color: $accent-color;
         color:white;
         margin:0.2rem 0.2rem;
-        padding:0.3rem 0.3rem;
+        padding:0.5rem 0.5rem;
         border: 0rem solid;
         border-radius: 0.6rem;
         cursor:pointer;

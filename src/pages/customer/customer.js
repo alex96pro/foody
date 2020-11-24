@@ -9,7 +9,7 @@ import Spinner from '../../images/spinner.gif';
 import {changeCooksPageAPI} from '../../common/api/customer.api';
 import Paging from '../../components/Paging/paging';
 
-export default function Customer(){
+export default function Customer() {
 
     const {register, handleSubmit, errors} = useForm();
     const dispatch = useDispatch();
@@ -27,28 +27,24 @@ export default function Customer(){
     };
 
     return (
-      <div>
-        <NavBar isLoggedIn={true} role={localStorage.getItem("role")}/>
         <div className="customer">
-          <div className="wrapper">
-            <h2>Welcome Customer !</h2>
-            <form onSubmit={handleSubmit(searchByLocation)}>
-              Search cooks by location
-              <input
-              type="text"
-              name="address"
-              ref={register({required:true})}
-              />
-              {errors.address && <p>Address is required</p>}
-              <button type="submit" className="button-main">Search</button>
-            </form>
-          </div>
-          {loadingStatus?<div className="spinner"><img src={Spinner} alt="Loading..."/></div>:
-          <CookDetails cooks={cooks}/>}
-
-        {pages.length > 1 && <Paging pages={pages} changePage={changePage} type="currentPageCustomerCooks"/>}
-        
+            <NavBar isLoggedIn={true} role={localStorage.getItem("role")}/>
+            <div className="wrapper">
+                <h2>Welcome Customer !</h2>
+                <form onSubmit={handleSubmit(searchByLocation)}>
+                    Search cooks by location
+                    <input
+                    type="text"
+                    name="address"
+                    ref={register({required:true})}
+                    />
+                    {errors.address && <p>Address is required</p>}
+                    <button type="submit" className="button-main">Search</button>
+                </form>
+            </div>
+            {loadingStatus?<div className="spinner"><img src={Spinner} alt="Loading..."/></div>:
+            <CookDetails cooks={cooks}/>}
+            {pages.length > 1 && <Paging pages={pages} changePage={changePage} type="currentPageCustomerCooks"/>}
         </div>
-      </div>
     );
 };

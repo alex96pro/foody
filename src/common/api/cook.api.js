@@ -52,11 +52,5 @@ export function editMealAPI(data, mealId, currentPage){
 };
 
 export function deleteMealAPI(mealId){
-    // return async (dispatch) => {
-    //   try{
-    //     
-    //   }catch(err){
-    //     console.log(err);
-    //   }
-    // };
+    
 };

@@ -26,8 +26,12 @@ html, body{
     cursor:pointer;
     outline:none;
     &:hover{
-      background-color: $accent-color-2;
+        background-color: $accent-color-2;
     }
+  }
+  &-main-no-side-margins{
+      @extend .button-main;
+      margin:1.2rem 0rem;
   }
 
   &-small{
@@ -54,20 +58,57 @@ html, body{
   padding:0;
 }
 
-.no-left-margin{
-  margin-left:0rem;
-}
-
 input[type=number]{
-  width:8rem;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  width:7rem;
   font-size:2rem;
-  border:none;
+  outline:none;
+  padding:0.2rem 0.2rem;
+  margin:0.2rem 0.2rem;
+  border: 1px solid #DDDDDD;
+  border-radius: 0.8rem;
+  &:focus{
+    box-shadow: 0 0 0.8rem rgba(17, 90, 110, 0.753);
+  }
 }
 
 input[type="file"]{
   display: none;
 }
-
+input[type="text"], input[type="email"], input[type="password"]{
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    padding:0.2rem 0.2rem;
+    margin:0.2rem 0.2rem;
+    border: 1px solid #DDDDDD;
+    border-radius: 0.8rem;
+    height:2rem;
+    &:focus{
+        box-shadow: 0 0 0.8rem rgba(17, 90, 110, 0.753);
+    }
+}
+select{
+    border:0.2rem solid $accent-color;
+    border-radius: 0.8rem;
+    cursor: pointer;
+}
+textarea{
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    padding:0.2rem 0.2rem;
+    margin:0.2rem 0.2rem;
+    border: 1px solid #DDDDDD;
+    border-radius: 0.8rem;
+    &:focus{
+        box-shadow: 0 0 0.8rem rgba(17, 90, 110, 0.753);
+    }
+}
 .spinner{
   text-align: center;
   margin:0rem;
@@ -83,6 +124,8 @@ input[type="file"]{
 .hidden{
   display: none;
 }
-
+.ReactModal__overlay{
+    background-color: red;
+}
 
 

@@ -6,7 +6,7 @@ import {useState} from 'react';
 import Spinner from '../../images/spinner.gif';
 import './profile.scss';
 
-export default function Profile(){
+export default function Profile() {
 
     const [state, setState] = useState({showChangePassword:false});
     const user = useSelector(state => state.profileReducer.user);
@@ -16,11 +16,10 @@ export default function Profile(){
     };
 
     return (
-      <div>
-        <NavBar isLoggedIn={true} role={localStorage.getItem("role")}/>
-        {user.loadingStatus?
-        <div className = "spinner"><img src={Spinner} alt="Loading..."/></div>:
-          <div className="profile">
+        <div className="profile">
+            <NavBar isLoggedIn={true} role={localStorage.getItem("role")}/>
+            {user.loadingStatus?
+            <div className = "spinner"><img src={Spinner} alt="Loading..."/></div>:
             <div className="wrapper">
                 <h2>Profile page</h2>
                 <div className="profile-label">Fullname:</div> 
@@ -32,9 +31,8 @@ export default function Profile(){
                 <div><button className="change-password-button" onClick={handleShowChangePassword}>
                 Change Password</button></div>
             </div>
+            }
             {state.showChangePassword && <div className="wrapper"><ChangePassword/></div>}
-          </div>
-        }
-      </div>
+        </div>
     ); 
 };

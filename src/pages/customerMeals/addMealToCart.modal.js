@@ -2,9 +2,9 @@ import React from 'react';
 import Modal from 'react-modal';
 import {useForm} from 'react-hook-form';
 import './addMealToCart.modal.scss';
-Modal.setAppElement('#root'); //for modal error
+Modal.setAppElement('#root');
 
-export default function AddMealToCartModal(props){
+export default function AddMealToCartModal(props) {
 
     const {register, handleSubmit, errors} = useForm();
 
@@ -15,15 +15,15 @@ export default function AddMealToCartModal(props){
                     {props.selectedMeal.name}
                 </div>
                 <div className="modal-add-to-cart-body">
-                    Amount
-                    <input type="number" defaultValue="1" name="amount" ref={register()}></input>
+                    <div>Amount</div>
+                    <input type="number" defaultValue="1" min="1" name="amount" ref={register({required:true})}></input>
                     {errors.amount && <p>Amount is required</p>}
                     <div>Aditional info</div>
                     <textarea></textarea>
                 </div>
                 <div className="modal-add-to-cart-footer">
                     <button type="submit" className="modal-add-to-cart-button">Add</button>
-                    <button className="modal-add-to-cart-cancel-button" onClick={props.cancelModal}>Cancel</button>
+                    <button type="button" className="modal-add-to-cart-cancel-button" onClick={props.cancelModal}>Cancel</button>
                 </div>
             </form>
         </Modal>

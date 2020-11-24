@@ -13,7 +13,7 @@ export function getCooksAPI(data){
           dispatch(putCooksInStore({cooks:response.data.cooks, pages:response.data.pages,searchedLocation:data.address, pageNumberCooks:1}));
         }else{
           dispatch(noCooksOnLocation(data.address));
-          errorToast("No cooks on location"+data.address);  
+          errorToast(`No cooks on location "${data.address}"`);  
         }
       }catch(err){
         console.log(err);
@@ -30,7 +30,7 @@ export function changeCooksPageAPI(page, searchedLocation){
         if(response.data !== null){
           dispatch(putCooksInStore({cooks:response.data, searchedLocation:searchedLocation, pageNumberCooks:page}));
         }else{
-          errorToast("No cooks on location"+searchedLocation);  
+          errorToast(`No cooks on location "${searchedLocation}"`);  
           dispatch(noCooksOnLocation(searchedLocation));
         }
       }catch(err){

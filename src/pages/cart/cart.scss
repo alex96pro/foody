@@ -4,8 +4,6 @@
 .cart{
     
     @include flexAlignment(center,center,column,wrap);
-    margin:0.6rem 0.6rem;
-    padding:1rem 1rem;
 
     .meals-in-cart{
         @include flexAlignment(center,center,row,wrap);

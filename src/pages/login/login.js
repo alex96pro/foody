@@ -5,58 +5,55 @@ import {useForm} from 'react-hook-form';
 import {useState} from 'react';
 import {loginAPI, COOK, CUSTOMER, INCORRECT_INPUT} from '../../common/api/auth.api';
 
-export default function Login(props){
+export default function Login(props) {
 
     const {register, handleSubmit, errors} = useForm();
     const [state, setState] = useState({message:''});
 
     const onSubmit = (data) => {
-      loginAPI(data, afterLogin);
+        loginAPI(data, afterLogin);
     };
   
-    const afterLogin = (role) =>{
-      switch(role){
-        case CUSTOMER:
-          props.history.push("/customer");
-          break;
-        case COOK:
-          props.history.push("/cook");
-          break;
-        case INCORRECT_INPUT:
-          setState({message:"Incorrect e-mail or password"});
-          break;
-        default:
-          setState({message:"Server error"});
-          break;
-      }
+    const afterLogin = (role) => {
+        switch(role) {
+            case CUSTOMER:
+                props.history.push("/customer");
+                break;
+            case COOK:
+                props.history.push("/cook");
+                break;
+            case INCORRECT_INPUT:
+                setState({message:"Incorrect e-mail or password"});
+                break;
+            default:
+                setState({message:"Server error"});
+        }
     };
   
     return (
-      <div>
-        <NavBar isLoggedIn={false}/>
         <div className="login">
-          <div className="wrapper">
-            <h2>Log in to Foody</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="login-label">email</div>
-                <input 
-                  type="email"
-                  name="email"
-                  ref={register({required:true})}
-                />
-                {errors.email && <p>email is required</p>}
-                <div className="login-label">password</div>
-                <input 
-                  type="password"
-                  name="password"
-                  ref={register({required:true})}
-                />
-                {errors.password && <p>Password is required</p>}
-                <div><button className="button-main">Log In</button></div>
-            </form>
-            <div className="message-danger">{state.message}</div>
-          </div>
+            <NavBar isLoggedIn={false}/>
+            <div className="wrapper">
+                <h2>Log in to Foody</h2>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="login-label">email</div>
+                    <input 
+                    type="email"
+                    name="email"
+                    ref={register({required:true})}
+                    />
+                    {errors.email && <p>email is required</p>}
+                    <div className="login-label">password</div>
+                    <input 
+                    type="password"
+                    name="password"
+                    ref={register({required:true})}
+                    />
+                    {errors.password && <p>Password is required</p>}
+                    <div><button className="button-main-no-side-margins">Log In</button></div>
+                </form>
+                <div className="message-danger">{state.message}</div>
+            </div>
         </div>
-      </div>
     );
 };

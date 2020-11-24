@@ -25,9 +25,6 @@
             resize: none;
             font-family: $main-font;
           }
-        input{
-            width:15%;
-        }
     }
     &-footer{
         @include flexAlignment(flex-end,flex-end,row,wrap);

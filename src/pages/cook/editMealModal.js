@@ -7,7 +7,7 @@ import { errorToast } from '../../common/toasts/toasts';
 import { CURRENCY } from '../../consts';
 Modal.setAppElement('#root');
 
-export default function EditMealModal(props){
+export default function EditMealModal(props) {
 
     const {register, handleSubmit, errors} = useForm();
     const [state, setState] = useState(props.meal);
@@ -46,14 +46,14 @@ export default function EditMealModal(props){
 
     return (
         <Modal isOpen={props.showEditModal} onRequestClose={props.closeEditModal} className="modal-edit-meal">
-          <div className="modal-edit-meal-header">
+            <div className="modal-edit-meal-header">
             Edit meal
-          </div>
+            </div>
             <form onSubmit={handleSubmit(props.onSubmitEdit)}>
                 <div className="modal-edit-meal-body">
                     Name
                     <div>
-                        <input value={state.name} onChange={handleChange} name="name" ref={register({required:true})}/>
+                        <input type="text" value={state.name} onChange={handleChange} name="name" ref={register({required:true})}/>
                         {errors.name && <p>Name is required</p>}
                     </div>
                     Description
@@ -64,16 +64,16 @@ export default function EditMealModal(props){
                     Tags
                     <div className="meal-tags">
                         {state.tags.map((tag,index) => <div className="meal-tag" key={index}>{tag}
-                        <p onClick = {() => removeTag(index)} className="remove-tag-button">x</p>
+                        <button onClick = {() => removeTag(index)} type="button" className="remove-tag-button">x</button>
                         <input name="tags" value={state.tags} onChange={handleHidden} ref={register()} className="hidden"></input>
                         </div>)}
                     </div>
                     Add tag
-                    <div className="meal-tags">
-                        <input className="input-small" name="newTag" onChange={handleChange}
+                    <div className="add-tag">
+                        <input type="text" className="input-small" name="newTag" onChange={handleChange}
                         ref={register()}
                         />
-                        <p onClick={addNewTag} className={disableAddTag.disable?"add-tag-button-disabled":"add-tag-button"}>add</p>
+                        <button onClick={addNewTag} type="button" className={disableAddTag.disable?"add-tag-button-disabled":"add-tag-button"}>add</button>
                     </div>
                     <div className="message-danger">{disableAddTag.message}</div>
                     Price
@@ -86,7 +86,7 @@ export default function EditMealModal(props){
                 </div>
                 <div className="modal-edit-meal-footer">
                     <button type="submit" className="modal-edit-meal-button">Confirm</button>
-                    <button onClick={props.closeEditModal} className="modal-edit-meal-cancel-button">Cancel</button>
+                    <button type="button" onClick={props.closeEditModal} className="modal-edit-meal-cancel-button">Cancel</button>
                 </div>
             </form>     
         </Modal>  

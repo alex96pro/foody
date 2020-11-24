@@ -12,26 +12,23 @@ import Cart from './pages/cart/cart';
 import {ToastContainer, toast} from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
-export default function App(){
+export default function App() {
   
     return (
-      <Router>
-        <div>
-          <ToastContainer
-               enableMultiContainer
-               containerId={"top-center"}
-               position={toast.POSITION.TOP_CENTER}
-          />
-          <Route path="/" exact component={Landing}></Route>
-          <Route path="/login" exact component={Login}></Route>
-          <Route path="/sign-up" exact component={SignUp}></Route>
-          <Route path="/cook" exact component={Cook}></Route>
-          <Route path="/customer" exact component={Customer}></Route>
-          <Route path="/profile" exact component={Profile}></Route>
-          <Route path="/customerMeals" exact component={customerMeals}></Route>
-          <Route path="/cart" exact component={Cart}></Route>
-          
-        </div>
-      </Router>
+        <Router>
+            <ToastContainer
+                enableMultiContainer
+                containerId={"top-center"}
+                position={toast.POSITION.TOP_CENTER}
+            />
+            <Route path="/" exact component={Landing}></Route>
+            <Route path="/login" exact component={Login}></Route>
+            <Route path="/sign-up" exact component={SignUp}></Route>
+            <Route path="/cook" exact component={Cook}></Route>
+            <Route path="/customer" exact component={Customer}></Route>
+            <Route path="/profile" exact component={Profile}></Route>
+            <Route path="/customerMeals" exact component={customerMeals}></Route>
+            <Route path="/cart" exact component={Cart}></Route>
+        </Router>
     );
 };

@@ -7,12 +7,14 @@ export function loadingProfile(){
         type:SET_LOADING_STATUS_PROFILE
     }
 };
+
 export function viewProfile(payload){
     return{
         type:VIEW_PROFILE,
         payload
     }
 };
+
 export function logout(){
     return{
         type:LOGOUT
