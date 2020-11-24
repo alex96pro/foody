@@ -2,7 +2,7 @@ import { BACKEND_API } from '../../consts.js';
 import axios from 'axios';
 import {showMeals, showLoadingStatusMeals} from '../actions/cook.actions';
 import {changePageCookMeals} from '../actions/ui.actions';
-import {successEditMealToast, serverErrorToast} from '../toasts/toasts';
+import {infoToast, serverErrorToast} from '../toasts/toasts';
 
 export function getMealsAPI(cookId){
     return async (dispatch) => {
@@ -39,7 +39,7 @@ export function editMealAPI(data, mealId, currentPage){
     try{
       let editResponse = await axios.post(`${BACKEND_API}/cook/editMeal/${mealId}`,{meal:data});
       if(editResponse.data === "EDITED"){
-        successEditMealToast();
+        infoToast("Edited meal!");
         let updateResponse = await axios.get(`${BACKEND_API}/cook/getMealsOnPage/${localStorage.getItem("userId")}/${currentPage}`);
         dispatch(showMeals({meals:updateResponse.data}));
       }else{

@@ -29,6 +29,20 @@
         margin-bottom: 0.6rem;
     }
 
+    .meal-tags{
+        @include flexAlignment(flex-start,center,row,wrap);
+        font-size:1.6rem;
+    }
+    .meal-tag{
+        margin-right:0.4rem;
+        margin-top:0.2rem;
+        margin-bottom:0.2rem;
+        padding: 0.2rem 0.2rem;
+        border: 0.2rem solid $accent-color-2;
+        border-radius: 1rem;
+        color:$accent-color-2;
+    }
+
     .meal-icon{
         width:6rem;
         height:6rem;

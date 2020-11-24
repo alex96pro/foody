@@ -10,7 +10,7 @@ import {CURRENCY} from '../../consts';
 import AddMealToCartModal from './addMealToCart.modal';
 import {changeMealsPageAPI} from '../../common/api/customer.api';
 import Paging from '../../components/Paging/paging';
-import { addToCartToast } from "../../common/toasts/toasts";
+import { infoToast } from "../../common/toasts/toasts";
 
 export default function CustomerMeals(){
 
@@ -45,10 +45,10 @@ export default function CustomerMeals(){
         }
         if(mealExistsInCart){                               //meal already exists in cart
             dispatch(increaseMealAmountInCart({id:id, amount:data.amount}));
-            addToCartToast();
+            infoToast("Added to cart");
         }else{                                              //meal doesnt exist in cart
             dispatch(putMealInCart({meal:state.selectedMeal, amount:data.amount}));
-            addToCartToast();
+            infoToast("Added to cart");
         }
         setState({openModal:false, selectedMeal:{}})
     };
@@ -64,6 +64,11 @@ export default function CustomerMeals(){
                     <div>
                         <div className="meal-name">{meal.name}</div>
                         <div>{meal.description}</div>
+                        <div className="meal-tags">
+                            {meal.tags.map((tag,index) => 
+                                <div className="meal-tag" key={index}>{tag}</div>
+                            )}
+                        </div>
                         <div className="cart-price">{meal.price}{CURRENCY}</div>
                         <div> 
                             <button onClick={() => addToCart(meal)} className="button-main no-left-margin">Add to cart</button>

@@ -68,6 +68,11 @@ export default function Cook(){
               <div>{meals.map((meal,index) => <div key={index} className="cook-meal">
                 <div className="cook-meal-name">{meal.name}</div>
                 <div className="cook-meal-description">{meal.description}</div>
+                <div className="meal-tags">
+                  {meal.tags.map((tag,index) => 
+                          <div className="meal-tag" key={index}>{tag}</div>
+                      )}
+                </div>
                 <div className="cook-meal-price">{meal.price}{CURRENCY}</div>
                 <div>
                   <button className="button-small" onClick={() => handleShowEditModal(meal)}>Edit</button>

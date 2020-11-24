@@ -2,7 +2,7 @@ import { BACKEND_API } from '../../consts.js';
 import axios from 'axios';
 import {putCooksInStore, loadingCooks, noCooksOnLocation, loadingMeals, putSelectedMealsInStore} from '../actions/customer.actions'; 
 import {changePageCustomerCooks, changePageCustomerMeals} from '../actions/ui.actions';
-import {alreadyRatedToast, successRatedToast, noCooksOnLocationToast} from '../toasts/toasts';
+import {infoToast, errorToast} from '../toasts/toasts';
 
 export function getCooksAPI(data){
     return async (dispatch) => {
@@ -13,7 +13,7 @@ export function getCooksAPI(data){
           dispatch(putCooksInStore({cooks:response.data.cooks, pages:response.data.pages,searchedLocation:data.address, pageNumberCooks:1}));
         }else{
           dispatch(noCooksOnLocation(data.address));
-          noCooksOnLocationToast(data.address);  
+          errorToast("No cooks on location"+data.address);  
         }
       }catch(err){
         console.log(err);
@@ -30,7 +30,7 @@ export function changeCooksPageAPI(page, searchedLocation){
         if(response.data !== null){
           dispatch(putCooksInStore({cooks:response.data, searchedLocation:searchedLocation, pageNumberCooks:page}));
         }else{
-          noCooksOnLocationToast(searchedLocation);  
+          errorToast("No cooks on location"+searchedLocation);  
           dispatch(noCooksOnLocation(searchedLocation));
         }
       }catch(err){
@@ -73,9 +73,9 @@ export async function rateCookAPI(data, selectedCook){
       let response = await axios.post(`${BACKEND_API}/customer/rate`,
       {cookId:selectedCook.userId, customerId:localStorage.getItem("userId"),rating:data.rating,description:data.description})
         if(response.data ==="RATED"){
-          successRatedToast();
+          infoToast("Rated successfuly!");
         }else if(response.data === "ALREADY_RATED"){
-          alreadyRatedToast();
+          errorToast("You already rated this cook!");
         }
     }catch(err){
       console.log(err);

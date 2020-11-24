@@ -4,7 +4,7 @@
 .modal-edit-meal{
     
     font-size: 1.6rem;
-    background-color: rgb(247, 247, 247);
+    background-color: rgb(230, 230, 230);
     border:none;
     color:white;
     width:max-content;
@@ -23,7 +23,8 @@
             width:100%;
             height:6rem;
             resize: none;
-          }
+            font-family: $main-font;
+        }
     }
     &-footer{
         @include flexAlignment(flex-end,flex-end,row,wrap);
@@ -39,6 +40,53 @@
         @include button($danger-color, white, 1.2rem 1.2rem, 1.2rem 2.2rem, none, bold);
         outline:none;
         font-size: 1.8rem;
+    }
+
+    .meal-tags{
+        @include flexAlignment(flex-start,center,row,wrap);
+        overflow: hidden;
+        font-size:1.6rem;
+    }
+
+    .meal-tag{
+        @include flexAlignment(flex-start,center,row,wrap);
+        
+        margin-right:0.4rem;
+        margin-top:0.2rem;
+        margin-bottom:0.2rem;
+        padding: 0.2rem 0.2rem;
+        border: 0.2rem solid $accent-color-2;
+        border-radius: 1rem;
+        color:$accent-color-2;
+    }
+
+    .remove-tag-button{
+        background-color: $accent-color-2;
+        color:white;
+        border:none;
+        margin:0.1rem 0.1rem;
+        padding:0rem 0.5rem;
+        border: 0rem solid;
+        border-radius: 0.6rem;
+        text-align: center;
+        vertical-align: middle;
+        cursor:pointer;
+    }
+
+    .add-tag-button{
+        background-color: $accent-color;
+        color:white;
+        margin:0.2rem 0.2rem;
+        padding:0.3rem 0.3rem;
+        border: 0rem solid;
+        border-radius: 0.6rem;
+        cursor:pointer;
+    }
+    
+    .add-tag-button-disabled{
+        @extend .add-tag-button;
+        background-color: gray;
+        pointer-events: none;
     }
 }
 

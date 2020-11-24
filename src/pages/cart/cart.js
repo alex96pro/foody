@@ -6,7 +6,7 @@ import NavBar from '../../components/NavBar/NavBar.js';
 import { removeMealFromCart } from '../../common/actions/cart.actions';
 import {Link} from 'react-router-dom';
 import {CURRENCY} from '../../consts';
-import {removeFromCartToast} from '../../common/toasts/toasts';
+import {infoToast} from '../../common/toasts/toasts';
 
 export default function Cart(){
 
@@ -15,7 +15,7 @@ export default function Cart(){
 
     const remove = (index) => {
         dispatch(removeMealFromCart(index));
-        removeFromCartToast();
+        infoToast("Removed from cart!");
     };
 
     return(
