@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form';
 import { useDispatch,useSelector } from 'react-redux';
 import {getCooksAPI} from '../../common/api/customer.api';
 import Spinner from '../../images/spinner.gif';
-import {changeCooksPageAPI} from '../../common/api/customer.api';
 import Paging from '../../components/Paging/paging';
 
 export default function Customer() {
@@ -19,11 +18,11 @@ export default function Customer() {
     const searchedLocation = useSelector(state => state.customerReducer.searchedLocation);
 
     const searchByLocation = (data) => {
-      dispatch(getCooksAPI(data));
+      dispatch(getCooksAPI(data.address, 1));
     };
 
     const changePage = (page) => {
-      dispatch(changeCooksPageAPI(page, searchedLocation));
+      dispatch(getCooksAPI(searchedLocation, page));
     };
 
     return (

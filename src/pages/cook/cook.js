@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../../components/NavBar/NavBar.js';
-import { getMealsAPI, changePageCookMealsAPI, deleteMealAPI, editMealAPI } from '../../common/api/cook.api';
+import { getMealsAPI, deleteMealAPI, editMealAPI } from '../../common/api/cook.api';
 import {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Paging from '../../components/Paging/paging';
@@ -21,11 +21,11 @@ export default function Cook() {
 
     const showMeals = () => {
         setState({...state, showMeals:true});
-        dispatch(getMealsAPI(localStorage.getItem("userId")));
+        dispatch(getMealsAPI(localStorage.getItem("userId"),1));
     };
 
     const changePage = (page) => {
-        dispatch(changePageCookMealsAPI(localStorage.getItem("userId"), page));
+        dispatch(getMealsAPI(localStorage.getItem("userId"), page));
     };
 
     const deleteMeal = (mealId) => {

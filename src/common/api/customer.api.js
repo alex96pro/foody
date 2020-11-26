@@ -4,16 +4,19 @@ import {putCooksInStore, loadingCooks, noCooksOnLocation, loadingMeals, putSelec
 import {changePageCustomerCooks, changePageCustomerMeals} from '../actions/ui.actions';
 import {infoToast, errorToast} from '../toasts/toasts';
 
-export function getCooksAPI(data){
+export function getCooksAPI(searchedLocation, page){
     return async (dispatch) => {
       try{
         dispatch(loadingCooks());
-        let response = await axios.get(`${BACKEND_API}/customer/searchCooksByLocation/${data.address}`);
+        let response = await axios.get(`${BACKEND_API}/customer/searchCooksByLocation/${searchedLocation}/page/${page}`);
         if(response.data !== null){
-          dispatch(putCooksInStore({cooks:response.data.cooks, pages:response.data.pages,searchedLocation:data.address, pageNumberCooks:1}));
+            let pages = response.data.pages?response.data.pages:null;
+            dispatch(changePageCustomerCooks(page));
+            dispatch(putCooksInStore({cooks:response.data.cooks, pages:pages,searchedLocation:searchedLocation}));
         }else{
-          dispatch(noCooksOnLocation(data.address));
-          errorToast(`No cooks on location "${data.address}"`);  
+            dispatch(changePageCustomerCooks(page));
+            dispatch(noCooksOnLocation(searchedLocation));
+            errorToast(`No cooks on location "${searchedLocation}"`);  
         }
       }catch(err){
         console.log(err);
@@ -21,50 +24,21 @@ export function getCooksAPI(data){
     };
 };
 
-export function changeCooksPageAPI(page, searchedLocation){
+export function getMealsAPI(cookId, page){
     return async (dispatch) => {
       try{
-        dispatch(changePageCustomerCooks(page));
-        dispatch(loadingCooks());
-        let response = await axios.get(`${BACKEND_API}/customer/changeCooksByLocationPage/page/${page}/location/${searchedLocation}`)
-        if(response.data !== null){
-          dispatch(putCooksInStore({cooks:response.data, searchedLocation:searchedLocation, pageNumberCooks:page}));
-        }else{
-          errorToast(`No cooks on location "${searchedLocation}"`);  
-          dispatch(noCooksOnLocation(searchedLocation));
-        }
-      }catch(err){
-        console.log(err);
-      }    
-    };
-};
-
-export function getMealsAPI(cookId){
-    return async (dispatch) => {
-      try{
+        dispatch(changePageCustomerMeals(page));
         dispatch(loadingMeals());
-        let response = await axios.get(`${BACKEND_API}/customer/meals/`+cookId)
+        let response = await axios.get(`${BACKEND_API}/customer/meals/`+cookId+'/page/'+page);
         if(response.data !== "NO_MEALS"){
-          dispatch(putSelectedMealsInStore({meals:response.data.meals, pages:response.data.pages, cookId:cookId}));
+          let pages = response.data.pages?response.data.pages:null;
+          dispatch(putSelectedMealsInStore({meals:response.data.meals, pages:pages, cookId:cookId}));
         }else{
           dispatch(putSelectedMealsInStore({meals:[], pages:[], cookId:0}));
         }
       }catch(err){
         console.log(err);
       }
-    };
-};
-
-export function changeMealsPageAPI(page, selectedCookId){
-    return async (dispatch) => {
-      try{
-        dispatch(changePageCustomerMeals(page));
-        dispatch(loadingMeals());
-        let response = await axios.get(`${BACKEND_API}/customer/meals/`+selectedCookId+'/page/'+page)
-        dispatch(putSelectedMealsInStore({meals:response.data, cookId:selectedCookId}));
-      }catch(err){
-        console.log(err);
-      } 
     };
 };
 

@@ -10,12 +10,8 @@
         width: 60%;
     }
 
-    .filter-input{
-        width:20%;
-    }
-
     .meals-search-bar{
-        padding:2rem 2rem;
+        padding:1rem 1rem;
         font-size: 2rem;
         background-color: rgba(218, 221, 224, 0.8);
         margin:1rem 1rem;
@@ -25,12 +21,26 @@
         margin:2rem 2rem;
         padding:1rem 1rem;
     }
-
+    .middle-meals-box{
+        @include flexAlignment(space-evenly,flex-start,row,wrap);
+        width:100%;
+    }
+    .meals-filters{
+        @include flexAlignment(center,flex-start,column,nowrap);
+        padding:2rem 2rem;
+        font-size: 2rem;
+        background-color: rgba(218, 221, 224, 0.8);
+        width:15%;
+    }
+    .invisible-box{
+        width:15%;
+        padding:2rem 2rem;
+    }
     .meal-details{
         @include flexAlignment(space-between,center,row,wrap);
         width:100%;
         background-color: rgba(218, 221, 224, 0.8);
-        margin: 0.4rem 0.4rem;
+        margin-bottom:0.4rem;
         padding: 1rem 1rem;
     }
 
