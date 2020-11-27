@@ -7,19 +7,22 @@
     font-size: 1.6rem;
     .meals{
         @include flexAlignment(center,center,column,wrap);
+        padding: 0rem 2rem;
         width: 60%;
     }
 
     .meals-search-bar{
+        @include flexAlignment(center,center,row,wrap);
         padding:1rem 1rem;
         font-size: 2rem;
-        background-color: rgba(218, 221, 224, 0.8);
+        background-color: $transparent-color;
+        border-radius: 1.2rem;
         margin:1rem 1rem;
     }
 
     .meals-search-bar-box{
         margin:2rem 2rem;
-        padding:1rem 1rem;
+        padding:0.2rem 1rem;
     }
     .middle-meals-box{
         @include flexAlignment(space-evenly,flex-start,row,wrap);
@@ -29,7 +32,8 @@
         @include flexAlignment(center,flex-start,column,nowrap);
         padding:2rem 2rem;
         font-size: 2rem;
-        background-color: rgba(218, 221, 224, 0.8);
+        background-color: $transparent-color;
+        border-radius: 1.2rem;
         width:15%;
     }
     .invisible-box{
@@ -39,7 +43,8 @@
     .meal-details{
         @include flexAlignment(space-between,center,row,wrap);
         width:100%;
-        background-color: rgba(218, 221, 224, 0.8);
+        background-color:$transparent-color;
+        border-radius: 1.2rem;
         margin-bottom:0.4rem;
         padding: 1rem 1rem;
     }

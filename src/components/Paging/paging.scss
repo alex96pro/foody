@@ -2,7 +2,8 @@
 @import "../../_mixins.scss";
 .paging{
     @include flexAlignment(center,center,row,wrap);
-    background-color: rgba(218, 221, 224, 0.8);
+    background-color: $transparent-color;
+    border-radius: 1.2rem;
     .paging-number{
         @include button($accent-color, white, 0.8rem 0.8rem, 0.4rem 0.8rem, none, bold);
         font-size:2rem;

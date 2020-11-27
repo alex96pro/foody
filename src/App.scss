@@ -46,7 +46,8 @@ html, body{
 .wrapper{
   padding:2rem 2rem;
   margin:2rem 2rem;
-  background-color: rgba(218, 221, 224, 0.8);
+  background-color: $transparent-color;
+  border-radius: 1.2rem;
   position: relative;
 }
 

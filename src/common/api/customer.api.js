@@ -24,18 +24,18 @@ export function getCooksAPI(searchedLocation, page = 1){
     };
 };
 
-export function getMealsAPI(cookId, page = 1, name=""){
+export function getMealsAPI(cookId, page = 1, name="", filters = "", priceSort = ""){
     return async (dispatch) => {
       try{
         dispatch(changePageCustomerMeals(page));
         dispatch(loadingMeals());
-        let response = await axios.get(`${BACKEND_API}/customer/meals/${cookId}?page=${page}`);
+        let response = await axios.get(`${BACKEND_API}/customer/meals/${cookId}?page=${page}&name=${name}&filters=${filters}&priceSort=${priceSort}`);
         if(response.data.meals){
           let pages = response.data.pages?response.data.pages:null;
           dispatch(putSelectedMealsInStore({meals:response.data.meals, pages:pages, cookId:cookId}));
         }else{
-          dispatch(putSelectedMealsInStore({meals:[], pages:[], cookId:0}));
-          infoToast("Selected cook has no meals :(");
+          dispatch(putSelectedMealsInStore({meals:[], pages:[]}));
+          infoToast("No meals :(");
         }
       }catch(err){
         console.log(err);

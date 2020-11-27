@@ -11,6 +11,7 @@ import AddMealToCartModal from './addMealToCart.modal';
 import Paging from '../../components/Paging/paging';
 import { infoToast } from "../../common/toasts/toasts";
 import {getMealsAPI} from '../../common/api/customer.api';
+import { useForm } from 'react-hook-form';
 
 export default function CustomerMeals() {
 
@@ -20,7 +21,8 @@ export default function CustomerMeals() {
     const pages = useSelector(state => state.customerReducer.pagesMeals);
     const selectedCookId = useSelector(state => state.customerReducer.selectedCookId);
     const dispatch = useDispatch();
-    const [state, setState] = useState({openModal:false,selectedMeal:{}});
+    const [state, setState] = useState({openModal:false,selectedMeal:{}, searchedMeal:'', filters:[], priceSort:''});
+    const {register, handleSubmit} = useForm();
 
     const addToCart = (meal) => {
         setState({openModal:true,selectedMeal:meal})
@@ -31,9 +33,31 @@ export default function CustomerMeals() {
     };
     
     const changePage = (page) => {
-        dispatch(getMealsAPI(selectedCookId, page));
+        dispatch(getMealsAPI(selectedCookId, page, state.searchedMeal, state.filters.join(","), state.priceSort));
     };
-    const applyFilter = () => {}
+
+    const searchMeals = (data) => {
+        setState({...state, searchedMeal:data.searchedMeal});
+        dispatch(getMealsAPI(selectedCookId,1,data.searchedMeal, state.filters.join(","), state.priceSort));
+    };
+
+    const sortByPrice = (event) => {
+        setState({...state, priceSort:event.target.value});
+        console.log(event.target.value);
+        dispatch(getMealsAPI(selectedCookId,1,state.searchedMeal, state.filters.join(","), event.target.value));
+    }
+
+    const applyFilter = (event) => {
+        let newFilters;
+        if(event.target.checked){
+            newFilters = [...state.filters, event.target.value];
+        }else{
+            newFilters = state.filters.filter((filterName) => filterName !== event.target.value);
+        }
+        setState({...state, filters: newFilters});
+        dispatch(getMealsAPI(selectedCookId, 1, state.searchedMeal, newFilters.join(",")));
+    };
+
     const onSubmit = (data) => {
         let mealExistsInCart = false;
         let id;
@@ -58,24 +82,29 @@ export default function CustomerMeals() {
             <NavBar isLoggedIn={true} role={localStorage.getItem("role")}/>
             <div className="meals-search-bar">
                 <div className="meals-search-bar-box">
-                    Search meals<input type="text"></input><button className="button-small">Search</button>
+                    <form onSubmit={handleSubmit(searchMeals)}>
+                        Search meals
+                        <input type="text" name="searchedMeal" ref={register()}></input>
+                        <button type="submit" className="button-small">Search</button>
+                    </form>
                 </div>
                 <div className="meals-search-bar-box">
-                    Order by
-                    <select>
-                        <option></option>
-                        <option>Price</option>
+                    Order by price
+                    <select onChange={sortByPrice}>
+                        <option value=""></option>
+                        <option value="priceLTH" name="priceLTH">Lowest</option>
+                        <option value="priceHTL" name="priceHTL">Highest</option>
                     </select>
                 </div>
             </div>
             <div className="middle-meals-box">
                 <div className="meals-filters">
-                    <div><input type="checkbox" onChange={applyFilter}></input>Vegan</div>
-                    <div><input type="checkbox" onChange={applyFilter}></input>Vegetarian</div>
-                    <div><input type="checkbox" onChange={applyFilter}></input>Gluten free</div>
-                    <div><input type="checkbox" onChange={applyFilter}></input>Sugar free</div>
-                    <div><input type="checkbox" onChange={applyFilter}></input>Organic</div>
-                    <div><input type="checkbox" onChange={applyFilter}></input>No gmo</div>
+                    <div><input type="checkbox" onChange={applyFilter} value="vegan" name="vegan"></input>Vegan</div>
+                    <div><input type="checkbox" onChange={applyFilter} value="vegetarian" name="vegan"></input>Vegetarian</div>
+                    <div><input type="checkbox" onChange={applyFilter} value="gluten free" name="vegan"></input>Gluten free</div>
+                    <div><input type="checkbox" onChange={applyFilter} value="sugar free" name="vegan"></input>Sugar free</div>
+                    <div><input type="checkbox" onChange={applyFilter} value="organic" name="vegan"></input>Organic</div>
+                    <div><input type="checkbox" onChange={applyFilter} value="no gmo" name="vegan"></input>No gmo</div>
                 </div>
                 {loadingStatus?<div className="spinner"><img src={Spinner} alt="Loading..."/></div>:
                 <div className="meals">
@@ -104,7 +133,6 @@ export default function CustomerMeals() {
                 </div>}
                 <div className="invisible-box"></div>
             </div>
-
             {state.openModal && 
             <AddMealToCartModal 
                 openModal={state.openModal} 
