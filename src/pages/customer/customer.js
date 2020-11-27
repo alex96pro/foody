@@ -18,7 +18,7 @@ export default function Customer() {
     const searchedLocation = useSelector(state => state.customerReducer.searchedLocation);
 
     const searchByLocation = (data) => {
-      dispatch(getCooksAPI(data.address, 1));
+      dispatch(getCooksAPI(data.address));
     };
 
     const changePage = (page) => {

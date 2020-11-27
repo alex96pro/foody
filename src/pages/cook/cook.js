@@ -21,7 +21,7 @@ export default function Cook() {
 
     const showMeals = () => {
         setState({...state, showMeals:true});
-        dispatch(getMealsAPI(localStorage.getItem("userId"),1));
+        dispatch(getMealsAPI(localStorage.getItem("userId")));
     };
 
     const changePage = (page) => {

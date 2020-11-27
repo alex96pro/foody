@@ -4,11 +4,11 @@ import {putCooksInStore, loadingCooks, noCooksOnLocation, loadingMeals, putSelec
 import {changePageCustomerCooks, changePageCustomerMeals} from '../actions/ui.actions';
 import {infoToast, errorToast} from '../toasts/toasts';
 
-export function getCooksAPI(searchedLocation, page){
+export function getCooksAPI(searchedLocation, page = 1){
     return async (dispatch) => {
       try{
         dispatch(loadingCooks());
-        let response = await axios.get(`${BACKEND_API}/customer/searchCooksByLocation/${searchedLocation}/page/${page}`);
+        let response = await axios.get(`${BACKEND_API}/customer/cooks/${searchedLocation}?page=${page}`);
         if(response.data.cooks){
             let pages = response.data.pages?response.data.pages:null;
             dispatch(changePageCustomerCooks(page));
@@ -24,12 +24,12 @@ export function getCooksAPI(searchedLocation, page){
     };
 };
 
-export function getMealsAPI(cookId, page){
+export function getMealsAPI(cookId, page = 1, name=""){
     return async (dispatch) => {
       try{
         dispatch(changePageCustomerMeals(page));
         dispatch(loadingMeals());
-        let response = await axios.get(`${BACKEND_API}/customer/meals/`+cookId+'/page/'+page); // + '/foodTag/vegan,gluten free, no gmo'     vegan,gluten free, no gmo []
+        let response = await axios.get(`${BACKEND_API}/customer/meals/${cookId}?page=${page}`);
         if(response.data.meals){
           let pages = response.data.pages?response.data.pages:null;
           dispatch(putSelectedMealsInStore({meals:response.data.meals, pages:pages, cookId:cookId}));

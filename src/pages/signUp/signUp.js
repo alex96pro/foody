@@ -70,15 +70,15 @@ export default function SignUp(props) {
                         />
                         {errors.location && <p>location is required</p>}
                     <div className="sign-up-label">Profile photo</div> 
+                        <label htmlFor="file" className="upload-photo-button">
+                            Choose
+                        </label>
                         <input 
                         type="file" 
                         name="profilePhoto"
                         id="file" 
                         ref={register()}
                         />
-                        <label for="file" className="upload-photo-button">
-                            Choose
-                        </label>
                     <div>
                         <button type="submit" className="button-main-no-side-margins">Sign Up</button>
                     </div>
