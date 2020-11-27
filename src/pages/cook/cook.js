@@ -12,7 +12,7 @@ import { CURRENCY } from '../../consts.js';
 
 export default function Cook() {
   
-    const [state, setState] = useState({showMeals:false, showConfirmModal:false, showEditModal:false, selectedMeal:''});
+    const [state, setState] = useState({showMeals:false, showConfirmModal:false, showEditModal:false, selectedMeal:{}});
     const loadingStatus = useSelector(state => state.cookReducer.loadingStatus);
     const meals = useSelector(state => state.cookReducer.meals);
     const pages = useSelector(state => state.cookReducer.pages);
@@ -28,8 +28,9 @@ export default function Cook() {
         dispatch(getMealsAPI(localStorage.getItem("userId"), page));
     };
 
-    const deleteMeal = (mealId) => {
-        dispatch(deleteMealAPI(mealId));
+    const deleteMeal = () => {
+        setState({...state, showConfirmModal:false});
+        dispatch(deleteMealAPI(state.selectedMeal.mealId, currentPage));
     };
     
     const handleShowConfirmModal = (meal) => {
@@ -50,7 +51,7 @@ export default function Cook() {
     
     const onSubmitEdit = (data) => {
         setState({...state, showEditModal:false});
-        dispatch(editMealAPI(data, state.selectedMeal.mealId, currentPage));
+        dispatch(editMealAPI(data, state.selectedMeal.mealId));
     };
 
     return (
@@ -79,7 +80,7 @@ export default function Cook() {
                     </div>
                 </div>)}</div>
                 }
-                {state.showMeals && <Paging changePage={changePage} pages={pages} type="currentPageCookMeals"/>}
+                {state.showMeals && pages.length > 1 && <Paging changePage={changePage} pages={pages} type="currentPageCookMeals"/>}
             </div>
             {state.showMeals && meals.length === 0 &&
             <div>You don't have any meals yet<button className="button-main">Add meal</button></div>}

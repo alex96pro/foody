@@ -17,7 +17,7 @@ export default function CookDetails(props) {
     };
 
     const onSubmitRating = (data) => {
-      rateCookAPI(data, state.selectedCook);
+      dispatch(rateCookAPI(data, state.selectedCook));
       setState({openModal:false, selectedCook:{}});
     };
 

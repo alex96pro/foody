@@ -1,5 +1,5 @@
-import { COOK_SHOW_MEALS } from '../actions/cook.actions';
-import { SHOW_LOADING_STATUS_MEALS } from '../actions/cook.actions';
+import { COOK_SHOW_MEALS, SHOW_LOADING_STATUS_MEALS, UPDATE_MEAL } from '../actions/cook.actions';
+
 const initialState = {
     meals:[],
     pages:[],
@@ -20,6 +20,11 @@ export default function cookReducer(state = initialState, action){
                 ...state,
                 loadingStatus:true
             };
+        case UPDATE_MEAL:
+            return{
+                ...state,
+                meals: state.meals.map((meal) => meal.mealId === action.payload.mealId ? action.payload : meal)
+            }
         default:
             return state;
     }

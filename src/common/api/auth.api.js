@@ -10,17 +10,17 @@ export const EMAIL_EXISTS = "EMAIL_EXISTS";
 export async function loginAPI(data, afterLogin) {
     try{
         let response = await axios.post(`${BACKEND_API}/auth/login`,{email:data.email, password:data.password});
-        if(response.data !== null){
+        if(response.data.accessToken){
             localStorage.setItem("loginToken", response.data.accessToken);
             localStorage.setItem("email", response.data.email);
             localStorage.setItem("userId", response.data.userId);
-        if(response.data.userType === "Cook"){
-            localStorage.setItem("role","COOK");
-            afterLogin(COOK);
-        }else{
-            localStorage.setItem("role","CUSTOMER");
-            afterLogin(CUSTOMER);
-        }
+            if(response.data.userType === "Cook"){
+                localStorage.setItem("role","COOK");
+                afterLogin(COOK);
+            }else{
+                localStorage.setItem("role","CUSTOMER");
+                afterLogin(CUSTOMER);
+            }
         }else{
             afterLogin(INCORRECT_INPUT);
         }
