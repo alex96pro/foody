@@ -25,11 +25,11 @@ export default function CustomerMeals() {
     const {register, handleSubmit} = useForm();
 
     const addToCart = (meal) => {
-        setState({openModal:true,selectedMeal:meal})
+        setState({...state, openModal:true,selectedMeal:meal})
     };
 
     const cancelModal = () => {
-        setState({openModal:false,selectedMeal:{}})
+        setState({...state, openModal:false,selectedMeal:{}})
     };
     
     const changePage = (page) => {
@@ -73,7 +73,7 @@ export default function CustomerMeals() {
             dispatch(putMealInCart({meal:state.selectedMeal, amount:data.amount}));
         }
         infoToast("Added to cart");
-        setState({openModal:false, selectedMeal:{}})
+        setState({...state, openModal:false, selectedMeal:{}})
     };
 
     return (
