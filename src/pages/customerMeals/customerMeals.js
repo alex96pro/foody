@@ -54,7 +54,7 @@ export default function CustomerMeals() {
             newFilters = state.filters.filter((filterName) => filterName !== event.target.value);
         }
         setState({...state, filters: newFilters});
-        dispatch(getMealsAPI(selectedCookId, 1, state.searchedMeal, newFilters.join(",")));
+        dispatch(getMealsAPI(selectedCookId, 1, state.searchedMeal, newFilters.join(","), state.priceSort));
     };
 
     const onSubmit = (data) => {
