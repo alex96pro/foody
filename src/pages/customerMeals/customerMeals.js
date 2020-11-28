@@ -43,7 +43,6 @@ export default function CustomerMeals() {
 
     const sortByPrice = (event) => {
         setState({...state, priceSort:event.target.value});
-        console.log(event.target.value);
         dispatch(getMealsAPI(selectedCookId,1,state.searchedMeal, state.filters.join(","), event.target.value));
     }
 
