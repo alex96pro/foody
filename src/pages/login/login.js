@@ -3,7 +3,7 @@ import NavBar from '../../components/NavBar/NavBar.js';
 import "./login.scss";
 import {useForm} from 'react-hook-form';
 import {useState} from 'react';
-import {loginAPI, COOK, CUSTOMER, INCORRECT_INPUT} from '../../common/api/auth.api';
+import {loginAPI, COOK, CUSTOMER, INCORRECT_INPUT, NOT_VERIFIED} from '../../common/api/auth.api';
 
 export default function Login(props) {
 
@@ -24,6 +24,9 @@ export default function Login(props) {
                 break;
             case INCORRECT_INPUT:
                 setState({message:"Incorrect e-mail or password"});
+                break;
+            case NOT_VERIFIED:
+                setState({message:"Please verifiy your e-mail address"});
                 break;
             default:
                 setState({message:"Server error"});

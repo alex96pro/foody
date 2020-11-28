@@ -4,6 +4,7 @@ import "./signUp.scss";
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import {signUpAPI,REGISTERED,EMAIL_EXISTS} from '../../common/api/auth.api';
+import {infoToast} from '../../common/toasts/toasts';
 
 export default function SignUp(props) {
 
@@ -14,17 +15,17 @@ export default function SignUp(props) {
         signUpAPI(data, state.signUpType, afterSignUp);
     };
 
-    const afterSignUp = (outcome) => {
+    const afterSignUp = (outcome, email) => {
       switch(outcome){
         case REGISTERED:
-          alert("Registration successful!");
-          props.history.push('/login');
-          break;
+            infoToast("Registration successful, we sent you an e-mail to "+email+" ,please verify your account",5000);
+            props.history.push('/login');
+            break;
         case EMAIL_EXISTS:
-          setState({message:"Email already exists"});
-          break;
+            setState({message:"Email already exists"});
+            break;
         default:
-          setState({message:"Server error"});
+            setState({message:"Server error"});
       }
     };
   

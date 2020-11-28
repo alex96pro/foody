@@ -4,8 +4,10 @@ import {viewProfile,loadingProfile} from '../actions/profile.actions';
 export const COOK = "COOK";
 export const CUSTOMER = "CUSTOMER";
 export const INCORRECT_INPUT = "INCORRECT_INPUT";
+export const NOT_VERIFIED = "NOT_VERIFIED";
 export const REGISTERED = "REGISTERED";
 export const EMAIL_EXISTS = "EMAIL_EXISTS";
+export const INVALID_EMAIL = "INVALID_EMAIL";
 
 export async function loginAPI(data, afterLogin) {
     try{
@@ -25,6 +27,9 @@ export async function loginAPI(data, afterLogin) {
             afterLogin(INCORRECT_INPUT);
         }
     }catch(err){
+        if(err.response.status === 403){
+            afterLogin(NOT_VERIFIED);
+        }
         console.log(err);
     }
 };
@@ -35,10 +40,13 @@ export async function signUpAPI(data, signUpType, afterSignUp) {
         {email:data.email, fullname:data.fullname, password:data.password, location:data.location, userType:signUpType});
         switch(response.data){
             case "Registered":
-            afterSignUp(REGISTERED);
+            afterSignUp(REGISTERED, data.email);
             break;
             case "email exists":
             afterSignUp(EMAIL_EXISTS);
+            break;
+            case "INVALID_EMAIL":
+            afterSignUp(INVALID_EMAIL);
             break;
             default:
             afterSignUp("ERROR");
