@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Paging from '../../components/Paging/paging';
 import Spinner from '../../images/spinner.gif';
 import './cook.scss';
-import ConfirmModal from '../../components/ConfirmModal/confirmModal';
+import ConfirmModal from '../../components/confirmModal/confirmModal';
 import EditMealModal from './editMealModal';
 import { CURRENCY } from '../../consts.js';
 
