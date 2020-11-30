@@ -34,7 +34,8 @@ export default function Landing() {
                 <Link className="landing-button" to='/sign-up' onClick={() => dispatch(pickedRegisterRole('Cook'))}>I want to cook</Link>
             </div>
             <div className="landing-cooks-header">Most popular cooks</div>
-            <Carousel items={featuredCooks}/>
+            {featuredCooks.length &&
+                <Carousel items={featuredCooks}/>}
         </div>
     );
 };
