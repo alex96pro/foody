@@ -7,8 +7,16 @@
     margin:1rem 1rem;
     padding:1rem 1rem;
     font-size:1.6rem;
+    color:$accent-color;
 
-    .animate-cook-details{
+    .cook-container{
+        text-align: center;
+        color:white;
+        margin: 1rem 1rem;
+        padding: 1rem 1rem;
+        border-radius: 1.2rem;
+        background-color: rgba(218, 221, 224, 0.4);
+        
         animation-name: move-from-right-to-left;
         animation-duration: 0.2s;
     }

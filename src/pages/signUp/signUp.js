@@ -5,14 +5,16 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import {signUpAPI,REGISTERED,EMAIL_EXISTS} from '../../common/api/auth.api';
 import {infoToast} from '../../common/toasts/toasts';
+import { useSelector } from 'react-redux';
 
 export default function SignUp(props) {
 
     const {register, handleSubmit, errors} = useForm();
-    const [state, setState] = useState({signUpType:props.location.state.role, message:''});
+    const [state, setState] = useState({message:''});
+    const role = useSelector(state => state.uiReducer.chosenRole);
 
     const onSubmit = (data) => {
-        signUpAPI(data, state.signUpType, afterSignUp);
+        signUpAPI(data, role, afterSignUp);
     };
 
     const afterSignUp = (outcome, email) => {

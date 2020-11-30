@@ -23,6 +23,7 @@ html, body{
     font-weight: bold;
     border-radius: 1.2rem;
     font-size: 1.8rem;
+    text-decoration: none;
     cursor:pointer;
     outline:none;
     &:hover{
@@ -36,10 +37,30 @@ html, body{
 
   &-small{
     @extend .button-main;
-    margin:0.2rem 0.2rem;
+    margin:0.4rem 0.2rem;
     padding: 0.6rem 0.6rem;
     font-size:1.4rem;
     font-weight: normal;
+    &-bordered{
+        @extend .button-small;
+        background-color: inherit;
+        color:$accent-color;
+        padding: 0.4rem 0.4rem;
+        border:0.3rem solid $accent-color;
+        font-weight: bold;
+        &:hover{
+            background-color: $accent-color;
+            color:white;
+        }
+    }
+    &-inverse{
+        @extend .button-small;
+        background-color: $accent-color-2;
+        color:white;
+        &:hover{
+            background-color: $accent-color;
+        }
+    }
   }
 }
 

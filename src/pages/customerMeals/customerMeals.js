@@ -38,7 +38,13 @@ export default function CustomerMeals() {
 
     const searchMeals = (data) => {
         setState({...state, searchedMeal:data.searchedMeal});
-        dispatch(getMealsAPI(selectedCookId,1,data.searchedMeal, state.filters.join(","), state.priceSort));
+        dispatch(getMealsAPI(selectedCookId, 1, data.searchedMeal, state.filters.join(","), state.priceSort));
+    };
+
+    const clearSearch = () => {
+        setState({...state, searchedMeal:''});
+        dispatch(getMealsAPI(selectedCookId, 1, '', state.filters.join(","), state.priceSort));
+        document.getElementById('searchedMeal').value='';
     };
 
     const sortByPrice = (event) => {
@@ -83,8 +89,14 @@ export default function CustomerMeals() {
                 <div className="meals-search-bar-box">
                     <form onSubmit={handleSubmit(searchMeals)}>
                         Search meals
-                        <input type="text" name="searchedMeal" ref={register()}></input>
+                        <input 
+                        type="text" 
+                        name="searchedMeal"
+                        id="searchedMeal" 
+                        placeholder="Meal name..."
+                        ref={register({required:true})}/>
                         <button type="submit" className="button-small">Search</button>
+                        <button type="button" className="button-small-bordered" onClick={clearSearch}>Clear</button>
                     </form>
                 </div>
                 <div className="meals-search-bar-box">

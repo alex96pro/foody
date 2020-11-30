@@ -32,17 +32,18 @@ export default function CookDetails(props) {
     return (
         <div className="cook-details">
             {props.cooks.map(cook => 
-                <div key={cook.userId} className="wrapper animate-cook-details">
+                <div key={cook.userId} className="cook-container">
                     <img src={Avatar} className="cook-profile-photo" alt="Avatar"/>
                     <div>Fullname:</div>
                         {cook.fullname}
                     <div>Rating:</div>
-                        {cook.rating?(cook.rating).toFixed(2):'No rating yet'}<button onClick={() => showRatingModal(cook)} className="rate-button">Rate</button>
+                        {cook.rating?(cook.rating).toFixed(2):'No rating yet'}
+                        {!props.landing && <button onClick={() => showRatingModal(cook)} className="rate-button">Rate</button>}
                     <div>Location:</div>
                         {cook.location}
                     <div>
                         <Link to="/customerMeals" >
-                            <button className="button-main" onClick={() => showMeals(cook.userId)}>Show meals</button>
+                            <button className="button-main" onClick={() => showMeals(cook.userId)}>Meals</button>
                         </Link>
                     </div>
                 </div>
