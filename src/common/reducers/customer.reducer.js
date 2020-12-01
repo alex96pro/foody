@@ -4,7 +4,6 @@ const initialState = {
     cooks:[],
     meals:[],
     loadingStatus:false,
-    selectedCookId:'',
     searchedLocation:'',
     pagesCooks:[],
     pagesMeals:[],
@@ -35,7 +34,6 @@ export default function customerReducer(state = initialState, action){
                 ...state,
                 meals:action.payload.meals,
                 loadingStatus:false,
-                selectedCookId:action.payload.cookId ? action.payload.cookId : state.selectedCookId,
                 pagesMeals:action.payload.pages ? action.payload.pages : state.pagesMeals
             };
         case SET_LOADING_STATUS_MEALS:

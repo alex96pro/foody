@@ -12,7 +12,7 @@ export default function Carousel(props) {
     const [numberOfItems, setNumberOfItems] = useState(0);
     const [move, setMove] = useState(0);
     const [handleForAnimation, setHandleForAnimation] = useState({});
-
+    
     useEffect(() => {
         let media = window.matchMedia('(max-width:450px)');
         if(media.matches){
@@ -25,7 +25,7 @@ export default function Carousel(props) {
                 setNumberOfItems(5);
             }
         }
-        let handle = setInterval(()=>{
+        let handle = setInterval(() => {
             if(document.getElementById('carousel-right-button') !== null){
                 document.getElementById('carousel-right-button').click(); //TEMPORARY UNTILL I PUT ACTIONS ON USER CLICKS
             }
@@ -37,8 +37,10 @@ export default function Carousel(props) {
         return () => {
             clearInterval(handleForAnimation);
         };
-    },[handleForAnimation]);
+    }, [handleForAnimation]);
 
+   
+    
     const moveLeft = () => {
         if(move === 0){
             setMove(props.items.length-numberOfItems);

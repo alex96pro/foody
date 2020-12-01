@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './customerMeals.scss';
 import NavBar from '../../components/NavBar/NavBar';
 import MealIcon from '../../images/meal-icon.jpg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {putMealInCart, increaseMealAmountInCart} from '../../common/actions/cart.actions';
 import Spinner from '../../images/spinner.gif';
 import {CURRENCY} from '../../consts';
@@ -12,17 +12,29 @@ import Paging from '../../components/Paging/paging';
 import { infoToast } from "../../common/toasts/toasts";
 import {getMealsAPI} from '../../common/api/customer.api';
 import { useForm } from 'react-hook-form';
+import { useHistory, useParams } from 'react-router-dom';
+import queryString from 'query-string';
 
-export default function CustomerMeals() {
+export default function CustomerMeals(props) {
 
     const meals = useSelector(state => state.customerReducer.meals);
     const mealsInCart = useSelector(state => state.cartReducer.meals);
     const loadingStatus = useSelector(state => state.customerReducer.loadingStatus);
     const pages = useSelector(state => state.customerReducer.pagesMeals);
-    const selectedCookId = useSelector(state => state.customerReducer.selectedCookId);
     const dispatch = useDispatch();
-    const [state, setState] = useState({openModal:false,selectedMeal:{}, searchedMeal:'', filters:[], priceSort:''});
+    const [state, setState] = useState({openModal:false,selectedMeal:{}, currentPage:1, name:'',filters:[], sort:''});
     const {register, handleSubmit} = useForm();
+    const params = useParams();
+    const history = useHistory();
+
+    useEffect(() => {
+        let queries = (queryString.parse((props.location.search)));
+        console.log(queries);
+        let name = queries.name ? queries.name: state.name;
+        let filters = queries.filters ? queries.filters: state.filters;
+        let sort = queries.sort ? queries.sort: state.sort;
+        dispatch(getMealsAPI(params.id, state.currentPage, name, filters, sort));
+    }, [dispatch, params.id, props.location.search, state]);
 
     const addToCart = (meal) => {
         setState({...state, openModal:true,selectedMeal:meal})
@@ -33,23 +45,23 @@ export default function CustomerMeals() {
     };
     
     const changePage = (page) => {
-        dispatch(getMealsAPI(selectedCookId, page, state.searchedMeal, state.filters.join(","), state.priceSort));
+        setState({...state, currentPage:page});
     };
 
     const searchMeals = (data) => {
-        setState({...state, searchedMeal:data.searchedMeal});
-        dispatch(getMealsAPI(selectedCookId, 1, data.searchedMeal, state.filters.join(","), state.priceSort));
+        setState({...state, name:data.searchedMeal});
+        history.push(`/customerMeals/${params.id}?name=${data.searchedMeal}&filters=${state.filters.join(",")}&sort=${state.sort}`);
     };
 
     const clearSearch = () => {
-        setState({...state, searchedMeal:''});
-        dispatch(getMealsAPI(selectedCookId, 1, '', state.filters.join(","), state.priceSort));
+        setState({...state, name:''});
+        history.push(`/customerMeals/${params.id}?name=${''}&filters=${state.filters.join(",")}&sort=${state.sort}`);
         document.getElementById('searchedMeal').value='';
     };
 
     const sortByPrice = (event) => {
-        setState({...state, priceSort:event.target.value});
-        dispatch(getMealsAPI(selectedCookId, 1, state.searchedMeal, state.filters.join(","), event.target.value));
+        setState({...state, sort:event.target.value});
+        history.push(`/customerMeals/${params.id}?name=${state.name}&filters=${state.filters.join(",")}&sort=${event.target.value}`);
     };
 
     const applyFilter = (event) => {
@@ -59,8 +71,8 @@ export default function CustomerMeals() {
         }else{
             newFilters = state.filters.filter((filterName) => filterName !== event.target.value);
         }
-        setState({...state, filters: newFilters});
-        dispatch(getMealsAPI(selectedCookId, 1, state.searchedMeal, newFilters.join(","), state.priceSort));
+        setState({...state, filters:newFilters});
+        history.push(`/customerMeals/${params.id}?name=${state.name}&filters=${newFilters.join(",")}&sort=${state.sort}`);
     };
 
     const onSubmit = (data) => {
