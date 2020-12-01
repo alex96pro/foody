@@ -29,7 +29,6 @@ export default function CustomerMeals(props) {
 
     useEffect(() => {
         let queries = (queryString.parse((props.location.search)));
-        console.log(queries);
         let name = queries.name ? queries.name: state.name;
         let filters = queries.filters ? queries.filters: state.filters;
         let sort = queries.sort ? queries.sort: state.sort;
@@ -37,11 +36,11 @@ export default function CustomerMeals(props) {
     }, [dispatch, params.id, props.location.search, state.currentPage, state.name, state.filters, state.sort]);
 
     const addToCart = (meal) => {
-        setState({...state, openModal:true,selectedMeal:meal})
+        setState({...state, openModal:true,selectedMeal:meal});
     };
 
     const cancelModal = () => {
-        setState({...state, openModal:false,selectedMeal:{}})
+        setState({...state, openModal:false,selectedMeal:{}});
     };
     
     const changePage = (page) => {
