@@ -34,7 +34,7 @@ export default function CustomerMeals(props) {
         let filters = queries.filters ? queries.filters: state.filters;
         let sort = queries.sort ? queries.sort: state.sort;
         dispatch(getMealsAPI(params.id, state.currentPage, name, filters, sort));
-    }, [dispatch, params.id, props.location.search, state]);
+    }, [dispatch, params.id, props.location.search, state.currentPage, state.name, state.filters, state.sort]);
 
     const addToCart = (meal) => {
         setState({...state, openModal:true,selectedMeal:meal})
