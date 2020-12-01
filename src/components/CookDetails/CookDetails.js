@@ -1,32 +1,33 @@
 import React from 'react';
 import './CookDetails.scss';
 import Avatar from '../../images/avatar.png';
-import {Link} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import {getMealsAPI, rateCookAPI} from '../../common/api/customer.api';
+import { rateCookAPI } from '../../common/api/customer.api';
 import RateCookModal from './rateCook.modal';
 
 export default function CookDetails(props) {
     
     const dispatch = useDispatch();
     const [state,setState] = useState({openModal:false, selectedCook:{}});
+    const history = useHistory();
 
     const showMeals = (cookId) => {
-      dispatch(getMealsAPI(cookId));
+        history.push(`/customerMeals/${cookId}`);
     };
 
     const onSubmitRating = (data) => {
-      dispatch(rateCookAPI(data, state.selectedCook));
-      setState({openModal:false, selectedCook:{}});
+        dispatch(rateCookAPI(data, state.selectedCook));
+        setState({openModal:false, selectedCook:{}});
     };
 
     const cancelRatingModal = () => {
-      setState({openModal:false, selectedCook:{}});
+        setState({openModal:false, selectedCook:{}});
     };
 
     const showRatingModal = (cook) => {
-      setState({openModal:true, selectedCook:cook});
+        setState({openModal:true, selectedCook:cook});
     };
 
     return (
@@ -42,9 +43,8 @@ export default function CookDetails(props) {
                     <div>Location:</div>
                         {cook.location}
                     <div>
-                        <Link to="/customerMeals" >
-                            <button className="button-main" onClick={() => showMeals(cook.userId)}>Meals</button>
-                        </Link>
+                        <button className="button-main" onClick={() =>
+                            showMeals(cook.userId)}>Meals</button>
                     </div>
                 </div>
             )}

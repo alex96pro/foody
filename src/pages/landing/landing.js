@@ -37,7 +37,7 @@ export default function Landing() {
             <div className="landing-cooks-header">Most popular cooks</div>
             {featuredCooks.length ?
                 <Carousel items={featuredCooks}/>:
-                <div className = "spinner"></div>}
+            <div className = "spinner"><img src={Spinner} alt="Loading..."></img></div>}
         </div>
     );
 };
