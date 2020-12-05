@@ -28,7 +28,7 @@ export default function CustomerMeals(props) {
     const history = useHistory();
 
     useEffect(() => {
-        let queries = (queryString.parse((props.location.search)));
+        let queries = queryString.parse((props.location.search));
         let name = queries.name ? queries.name: state.name;
         let filters = queries.filters ? queries.filters: state.filters;
         let sort = queries.sort ? queries.sort: state.sort;
@@ -70,7 +70,7 @@ export default function CustomerMeals(props) {
         }else{
             newFilters = state.filters.filter((filterName) => filterName !== event.target.value);
         }
-        setState({...state, filters:newFilters});
+        setState({...state, filters: newFilters});
         history.push(`/customerMeals/${params.id}?name=${state.name}&filters=${newFilters.join(",")}&sort=${state.sort}`);
     };
 
@@ -121,12 +121,12 @@ export default function CustomerMeals(props) {
             </div>
             <div className="middle-meals-box">
                 <div className="meals-filters">
-                    <div><input type="checkbox" onChange={applyFilter} value="vegan" name="vegan"></input>Vegan</div>
-                    <div><input type="checkbox" onChange={applyFilter} value="vegetarian" name="vegan"></input>Vegetarian</div>
-                    <div><input type="checkbox" onChange={applyFilter} value="gluten free" name="vegan"></input>Gluten free</div>
-                    <div><input type="checkbox" onChange={applyFilter} value="sugar free" name="vegan"></input>Sugar free</div>
-                    <div><input type="checkbox" onChange={applyFilter} value="organic" name="vegan"></input>Organic</div>
-                    <div><input type="checkbox" onChange={applyFilter} value="no gmo" name="vegan"></input>No gmo</div>
+                    <div><input type="checkbox" onChange={applyFilter} value="vegan"></input>Vegan</div>
+                    <div><input type="checkbox" onChange={applyFilter} value="vegetarian"></input>Vegetarian</div>
+                    <div><input type="checkbox" onChange={applyFilter} value="gluten free"></input>Gluten free</div>
+                    <div><input type="checkbox" onChange={applyFilter} value="sugar free"></input>Sugar free</div>
+                    <div><input type="checkbox" onChange={applyFilter} value="organic"></input>Organic</div>
+                    <div><input type="checkbox" onChange={applyFilter} value="oil free"></input>Oil free</div>
                 </div>
                 {loadingStatus?<div className="spinner"><img src={Spinner} alt="Loading..."/></div>:
                 <div className="meals">

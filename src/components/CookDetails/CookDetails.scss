@@ -10,27 +10,27 @@
     color:$accent-color;
 
     .cook-container{
+        position:relative;
         text-align: center;
         color:white;
         margin: 1rem 1rem;
         padding: 1rem 1rem;
         border-radius: 1.2rem;
-        background-color: rgba(218, 221, 224, 0.4);
-        
+        background-color: rgba(218, 221, 224, 0.4);   
         animation-name: move-from-right-to-left;
         animation-duration: 0.2s;
     }
     @keyframes move-from-right-to-left {
-        0%  {left:10rem;}
-        10% {left:9rem;}
-        20% {left:8rem;}
-        30% {left:7rem;}
-        40% {left:6rem;}
-        50% {left:5rem;}
-        60% {left:4rem;}
-        70% {left:3rem;}
-        80% {left:2rem;}
-        90% {left:1rem;}
+        0%  {left:20rem;}
+        10% {left:18rem;}
+        20% {left:16rem;}
+        30% {left:14rem;}
+        40% {left:12rem;}
+        50% {left:10rem;}
+        60% {left:8rem;}
+        70% {left:6rem;}
+        80% {left:4rem;}
+        90% {left:2rem;}
         100% {left:0rem;}
     }
 

@@ -11,8 +11,8 @@ export default function Carousel(props) {
     const [x, setX] = useState(0);
     const [numberOfItems, setNumberOfItems] = useState(0);
     const [move, setMove] = useState(0);
-    const [handleForAnimation, setHandleForAnimation] = useState({});
-    
+    const [handleForAnimation, setHandleForAnimation] = useState();
+
     useEffect(() => {
         let media = window.matchMedia('(max-width:450px)');
         if(media.matches){
@@ -26,20 +26,16 @@ export default function Carousel(props) {
             }
         }
         let handle = setInterval(() => {
-            if(document.getElementById('carousel-right-button') !== null){
-                document.getElementById('carousel-right-button').click(); //TEMPORARY UNTILL I PUT ACTIONS ON USER CLICKS
+            if(document.getElementById('carousel-hidden-button') !== null){
+                document.getElementById('carousel-hidden-button').click(); //TEMPORARY UNTILL I PUT ACTIONS ON USER CLICKS
             }
         },2500);
         setHandleForAnimation(handle);
-    }, []);
 
-    useEffect(() => {
         return () => {
-            clearInterval(handleForAnimation);
-        };
-    }, [handleForAnimation]);
-
-   
+            clearInterval(handle);
+        }
+    }, []);
     
     const moveLeft = () => {
         if(move === 0){
@@ -49,6 +45,7 @@ export default function Carousel(props) {
             setMove(move-1);
             setX(x+100);
         }
+        clearInterval(handleForAnimation);
     };
 
     const moveRight = () => {
@@ -59,21 +56,35 @@ export default function Carousel(props) {
             setMove(move+1);
             setX(x-100);
         }
+        clearInterval(handleForAnimation);
     };
     
+    const autoplay = () => {
+        if(move === props.items.length - numberOfItems){
+            setMove(0);
+            setX(0);
+        }else{
+            setMove(move+1);
+            setX(x-100);
+        }
+    };
+
     return (
         <div className="carousel">
-            {props.items.map((item,index) =>
-                <div className="carousel-item" key={index} style={{transform:`translateX(${x}%)`}}> 
-                    <div><img src={Avatar} alt="avatar" width="30px" height="30px"></img></div>
-                    <div>{item.fullname}</div>
-                    <div>City:{' '+item.location}</div>
-                    <div>Rating:{' '+item.rating.toFixed(2)}</div>
-                    <Link to="/login" className="button-small-inverse">Meals</Link>
+                <button className="carousel-button" onClick={moveLeft}><img src={LeftArrow} alt="left" width="20px" height="30px"></img></button>
+                <div className="carousel-items">
+                    {props.items.map((item,index) =>
+                        <div className="carousel-item" key={index} style={{transform:`translateX(${x}%)`}}> 
+                            <div><img src={Avatar} alt="avatar" width="30px" height="30px"></img></div>
+                            <div>{item.fullname}</div>
+                            <div>City:{' '+item.location}</div>
+                            <div>Rating:{' '+item.rating.toFixed(2)}</div>
+                            <Link to="/login" className="button-small-inverse">Meals</Link>
+                        </div>
+                    )}
                 </div>
-            )}
-            <button className="carousel-button-left" onClick={moveLeft}><img src={LeftArrow} alt="left" width="10px" height="10px"></img></button>
-            <button className="carousel-button-right" onClick={moveRight} id="carousel-right-button"><img src={RightArrow} alt="right" width="10px" height="10px"></img></button>
+                <button className="carousel-button" onClick={() => moveRight()}><img src={RightArrow} alt="right" width="20px" height="30px"></img></button>
+                <button className="carousel-hidden-button" id="carousel-hidden-button" onClick={autoplay}></button>
         </div>
     );
 };

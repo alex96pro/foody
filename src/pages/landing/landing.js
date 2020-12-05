@@ -14,6 +14,7 @@ export default function Landing() {
 
     const dispatch = useDispatch();
     const featuredCooks = useSelector(state => state.uiReducer.featuredCooks);
+
     useEffect(() => {
         if(!featuredCooks.length){
             dispatch(getFeaturedCooksAPI());
