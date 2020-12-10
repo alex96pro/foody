@@ -5,7 +5,7 @@ import './cook.scss';
 export default function Cook(props) {
 
     const showMeals = () => {
-        props.history.push(`/cook-meals/${localStorage.getItem("userId")}`);
+        props.history.push(`/cook-meals/${localStorage.getItem("userId")}?page=1`);
     };
 
     return (

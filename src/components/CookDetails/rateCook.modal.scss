@@ -2,14 +2,14 @@
 @import "../../_mixins.scss";
 
 .modal-rate-cook{
-    
+    margin:auto;
+    margin-top:20vh;
     font-size: 1.6rem;
     background-color: rgb(247, 247, 247);
     border:none;
     color:white;
     width:max-content;
-    margin:auto;
-    margin-top:20vh;
+    height: max-content;
     &-header{
         background-color: $accent-color;
         font-size:2rem;

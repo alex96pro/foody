@@ -1,0 +1,63 @@
+@import "../../_variables.scss";
+@import "../../_mixins.scss";
+
+.modal{
+    font-size: 1.6rem;
+    position: fixed;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    margin:auto;
+    width:max-content;
+    height: max-content;
+    background:#fff;
+    transition: 0.4s;
+
+    &-header{
+        @include flexAlignment(space-between, center, row, wrap);
+        background-color: $accent-color;
+        color:white;
+        font-size:2rem;
+        padding: 1rem 1rem;
+    }
+
+    &-body{
+        color:$accent-color;
+        margin:1rem 1rem;
+        padding:0.4rem 0.4rem;
+        font-size:1.8rem;
+    }
+
+    &-footer{
+        @include flexAlignment(flex-end, center, row, wrap);
+        margin: 1rem 1rem;
+    }
+
+    &-confirm{
+        @include button($accent-color, white, 0.2rem 0.2rem, 0.8rem 0.8rem, none, bold);
+        outline:none;
+        font-size: 1.2rem;
+    }
+    
+    &-cancel{
+        @include button($danger-color, white, 0.2rem 0.2rem, 0.8rem 0.8rem, none, bold);
+        outline:none;
+        font-size: 1.2rem;
+    }
+
+    &-x{
+        margin-left:2.5rem;
+        font-size:2rem;
+        cursor: pointer;
+    }
+}
+.modal-overlay{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}

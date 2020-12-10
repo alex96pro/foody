@@ -2,7 +2,7 @@ import { BACKEND_API } from '../../consts.js';
 import axios from 'axios';
 import {putCooksInStore, loadingCooks, noCooksOnLocation, loadingMeals, putSelectedMealsInStore, updateRatedCook} from '../actions/customer.actions'; 
 import {changePageCustomerCooks, changePageCustomerMeals} from '../actions/ui.actions';
-import {infoToast, errorToast} from '../toasts/toasts';
+import {infoToast, errorToast, serverErrorToast} from '../toasts/toasts';
 
 export function getCooksAPI(searchedLocation, page = 1){
     return async (dispatch) => {
@@ -19,6 +19,7 @@ export function getCooksAPI(searchedLocation, page = 1){
             errorToast(`No cooks on location "${searchedLocation}"`);  
         }
       }catch(err){
+        serverErrorToast();
         console.log(err);
       }
     };
@@ -38,6 +39,7 @@ export function getMealsAPI(cookId, page = 1, name="", filters = "", priceSort =
           infoToast("No meals :(");
         }
       }catch(err){
+        serverErrorToast();
         console.log(err);
       }
     };
@@ -55,6 +57,7 @@ export function rateCookAPI(data, selectedCook){
                 errorToast("You already rated this cook!");
               }
           }catch(err){
+            serverErrorToast();
             console.log(err);
           } 
     }

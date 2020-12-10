@@ -24,10 +24,12 @@
         margin:2rem 2rem;
         padding:0.2rem 1rem;
     }
+    
     .middle-meals-box{
         @include flexAlignment(space-evenly,flex-start,row,wrap);
         width:100%;
     }
+
     .meals-filters{
         @include flexAlignment(center,flex-start,column,nowrap);
         padding:2rem 2rem;
@@ -36,10 +38,12 @@
         border-radius: 1.2rem;
         width:15%;
     }
+
     .invisible-box{
         width:15%;
         padding:2rem 2rem;
     }
+
     .meal-details{
         @include flexAlignment(space-between,center,row,wrap);
         width:100%;

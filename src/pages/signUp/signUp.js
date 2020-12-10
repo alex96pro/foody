@@ -35,7 +35,7 @@ export default function SignUp(props) {
         <div className="sign-up">
             <NavBar isLoggedIn={false}/>
             <div className="wrapper">
-                <h2>Sign up to Foody</h2>
+                <div className="sign-up-header">Sign up to Foody</div>
                 <form onSubmit = {handleSubmit(onSubmit)} encType="multipart/form-data">
                     <div className="sign-up-label">Fullname</div>
                         <input

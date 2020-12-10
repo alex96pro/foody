@@ -11,6 +11,7 @@ import customerMeals from './pages/customerMeals/customerMeals';
 import Cart from './pages/cart/cart';
 import {ToastContainer, toast} from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import 'rodal/lib/rodal.css';
 import CookMeals from './pages/cook-meals/cook-meals';
 
 export default function App() {

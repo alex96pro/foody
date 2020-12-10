@@ -1,26 +1,32 @@
 @import "../../_variables.scss";
 @import "../../_mixins.scss";
 .cook-meals{
+
     @include flexAlignment(center,center,column,wrap);
     font-size:2rem;
     .cook-nav{
         @include flexAlignment(center,center,row,wrap);
     }
+
     .cook-meals-box{
         @include flexAlignment(center,center,column,wrap);
     }
+
     &-meal-name{
         color:$accent-color;
         font-size: 2.2rem;
     }
+
     &-meal-description{
         color:black;
         font-size:1.8rem;
     }
+
     &-meal-price{
         color:$accent-color-2;
         font-size:1.8rem;
     }
+
     .cook-meal{
         font-size: 2rem;
         background-color: lightgray;
@@ -28,10 +34,12 @@
         padding:1.2rem 1.2rem;
         width:50vw;
     }
+
     .meal-tags{
         @include flexAlignment(flex-start,center,row,wrap);
         font-size:1.6rem;
     }
+
     .meal-tag{
         margin-right:0.4rem;
         margin-top:0.2rem;
@@ -41,8 +49,17 @@
         border-radius: 1rem;
         color:$accent-color-2;
     }
-    h1{
-        font-size:4rem;
-        color:white;
+
+    .new-meal-container{
+        width:50vw;
+        display: flex;
+        justify-content: flex-end;
+        .add-new-meal-button{
+            @include button($accent-color-2, white, 0.4rem 0.4rem, 0.6rem 1rem, none, bold);
+            font-size: 1.6rem;
+            &:hover{
+                background-color: $accent-color;
+            }
+        }
     }
 }

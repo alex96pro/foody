@@ -37,7 +37,7 @@ export default function Login(props) {
         <div className="login">
             <NavBar isLoggedIn={false}/>
             <div className="wrapper">
-                <h2>Log in to Foody</h2>
+                <div className="log-in-header">Log in to Foody</div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="login-label">email</div>
                     <input 

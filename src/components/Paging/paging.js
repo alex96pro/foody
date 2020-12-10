@@ -19,7 +19,8 @@ export default function Paging(props){
     return(
         <div className="paging">
             {props.pages.map((page,index) =>
-            <button key={index} onClick={() => props.changePage(page)} 
+            <button key={index} onClick={() => props.changePage(page)}
+            
             className={page===currentPage?"paging-number active":"paging-number"}>{page}</button>
             )}
         </div>

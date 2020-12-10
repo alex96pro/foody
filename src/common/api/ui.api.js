@@ -1,6 +1,7 @@
 import { BACKEND_API } from '../../consts.js';
 import axios from 'axios';
 import { getFeaturedCooks } from '../actions/ui.actions';
+import { serverErrorToast } from '../toasts/toasts';
 
 export function getFeaturedCooksAPI() {
     return async (dispatch) => {
@@ -13,6 +14,7 @@ export function getFeaturedCooksAPI() {
                 dispatch(getFeaturedCooks([]));
             }
         }catch(err){
+            serverErrorToast();
             console.log(err);
         }
     };

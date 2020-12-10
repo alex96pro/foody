@@ -22,7 +22,7 @@ export default function CookDetails(props) {
         setState({openModal:false, selectedCook:{}});
     };
 
-    const cancelRatingModal = () => {
+    const closeRatingModal = () => {
         setState({openModal:false, selectedCook:{}});
     };
 
@@ -51,7 +51,7 @@ export default function CookDetails(props) {
             {state.openModal &&
             <RateCookModal
             openModal={state.openModal}
-            cancelRatingModal={cancelRatingModal}
+            closeRatingModal={closeRatingModal}
             selectedCook={state.selectedCook}
             onSubmitRating={onSubmitRating}
             />}

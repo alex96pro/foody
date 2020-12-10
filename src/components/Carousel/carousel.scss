@@ -39,15 +39,14 @@
         display: none;
     }
 
-    @media screen and (max-width: 450px) and (min-width: 100px){
-        .carousel-item {
-          min-width: 100%;
-        }
-    }
-
-    @media screen and (max-width: 600px) and (min-width:450px){
+    @media (max-width: 800px){
         .carousel-item {
           min-width: 33.33%;
+        }
+    }
+    @media (max-width: 600px){
+        .carousel-item {
+          min-width: 100%;
         }
     }
 }

@@ -1,6 +1,7 @@
 import { BACKEND_API } from '../../consts.js';
 import axios from 'axios';
 import {viewProfile,loadingProfile} from '../actions/profile.actions';
+import {serverErrorToast} from '../toasts/toasts';
 export const COOK = "COOK";
 export const CUSTOMER = "CUSTOMER";
 export const INCORRECT_INPUT = "INCORRECT_INPUT";
@@ -52,6 +53,7 @@ export async function signUpAPI(data, role, afterSignUp) {
             afterSignUp("ERROR");
         }
     }catch(err){
+        serverErrorToast();
         console.log(err);
     }
 };
@@ -64,6 +66,7 @@ export function profileAPI() {
             {headers:{'Authorization':`Basic ${localStorage.getItem("loginToken")}`}})
             dispatch(viewProfile(response.data));
         }catch(err){
+            serverErrorToast();
             console.log(err);
         }
     };  

@@ -1,48 +1,6 @@
 @import "../../_variables.scss";
 @import "../../_mixins.scss";
 
-.modal-edit-meal{
-    
-    font-size: 1.6rem;
-    background-color: rgb(230, 230, 230);
-    border:none;
-    color:white;
-    width: max-content;
-    margin:auto;
-    margin-top:10vh;
-    &-header{
-        background-color: $accent-color;
-        font-size:2rem;
-        padding:1rem 1rem;
-    }
-    &-body{
-        @include flexAlignment(center,flex-start,column,wrap);
-        color:$accent-color;
-        margin:1rem 1rem;
-        font-size:1.8rem;
-        textarea{
-            width:100%;
-            height:6rem;
-            resize: none;
-            font-family: $main-font;
-        }
-    }
-    &-footer{
-        @include flexAlignment(flex-end,flex-end,row,wrap);
-    }
-
-    .modal-edit-meal-button{
-        @include button($accent-color, white, 1.2rem 1.2rem, 1.2rem 2.2rem, none, bold);
-        outline:none;
-        font-size: 1.8rem;
-    }
-    
-    .modal-edit-meal-cancel-button{
-        @include button($danger-color, white, 1.2rem 1.2rem, 1.2rem 2.2rem, none, bold);
-        outline:none;
-        font-size: 1.8rem;
-    }
-
     .meal-tags{
         @include flexAlignment(center,flex-start,column,wrap);
         font-size:1.6rem;
@@ -91,5 +49,4 @@
         background-color: gray;
         pointer-events: none;
     }
-}
 
