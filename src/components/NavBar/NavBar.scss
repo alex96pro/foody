@@ -15,10 +15,18 @@
     .nav-link{
         color:white;
         text-decoration: none;
+        background-color: inherit;
+        border:none;
+        font-size: 2rem;
         margin: 1.8rem 1.8rem;
         padding: 1rem 1rem;
+        outline:none;
+        cursor: pointer;
         &:hover{
             color:$accent-color-2;
+        }
+        &:active{
+        
         }
     }
 

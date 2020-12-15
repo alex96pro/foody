@@ -38,7 +38,7 @@ export async function loginAPI(data, afterLogin) {
 export async function signUpAPI(data, role, afterSignUp) {
     try{
         let response = await axios.post(`${BACKEND_API}/auth/register`,
-        {email:data.email, fullname:data.fullname, password:data.password, location:data.location, userType:role});
+        {email:data.email, fullname:data.fullname, password:data.password, location:data.location, userType:role, profilePhoto:data.profilePhoto});
         switch(response.data){
             case "Registered":
             afterSignUp(REGISTERED, data.email);

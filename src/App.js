@@ -29,7 +29,7 @@ export default function App() {
             <Route path="/cook" exact component={Cook}></Route>
             <Route path="/cook-meals/:id" exact component={CookMeals}></Route>
             <Route path="/customer" exact component={Customer}></Route>
-            <Route path="/profile" exact component={Profile}></Route>
+            <Route path="/profile/:id" exact component={Profile}></Route>
             <Route path="/customerMeals/:id" exact component={customerMeals}></Route>
             <Route path="/cart" exact component={Cart}></Route>
         </Router>

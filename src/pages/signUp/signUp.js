@@ -12,9 +12,20 @@ export default function SignUp(props) {
     const {register, handleSubmit, errors} = useForm();
     const [state, setState] = useState({message:''});
     const role = useSelector(state => state.uiReducer.chosenRole);
+    const [selectedFile, setSelectedFile] = useState();
 
     const onSubmit = (data) => {
-        signUpAPI(data, role, afterSignUp);
+        const reader = new FileReader();
+        reader.readAsDataURL(selectedFile);
+        reader.onloadend = () => {
+            data.profilePhoto = reader.result;
+            signUpAPI(data, role, afterSignUp);
+        };
+    };
+
+    const handleFileInputChange = (e) => {
+        const file = e.target.files[0];
+        setSelectedFile(file);
     };
 
     const afterSignUp = (outcome, email) => {
@@ -36,7 +47,7 @@ export default function SignUp(props) {
             <NavBar isLoggedIn={false}/>
             <div className="wrapper">
                 <div className="sign-up-header">Sign up to Foody</div>
-                <form onSubmit = {handleSubmit(onSubmit)} encType="multipart/form-data">
+                <form onSubmit = {handleSubmit(onSubmit)}>
                     <div className="sign-up-label">Fullname</div>
                         <input
                         type="text"
@@ -73,13 +84,11 @@ export default function SignUp(props) {
                         />
                         {errors.location && <p>location is required</p>}
                     <div className="sign-up-label">Profile photo</div> 
-                        <label htmlFor="file" className="upload-photo-button">
-                            Choose
-                        </label>
                         <input 
                         type="file" 
                         name="profilePhoto"
-                        id="file" 
+                        id="file"
+                        onChange={handleFileInputChange} 
                         ref={register()}
                         />
                     <div>

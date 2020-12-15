@@ -5,6 +5,7 @@ const initialState = {
         fullname:"",
         email:"",
         location:"",
+        profilePhoto:"",
         loadingStatus:false
     }
 };
@@ -18,6 +19,7 @@ export default function profileReducer(state=initialState, action){
                     fullname:action.payload.fullname,
                     email:action.payload.email,
                     location:action.payload.location,
+                    profilePhoto:action.payload.profilePhoto,
                     loadingStatus:false
                 }
             }

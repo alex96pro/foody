@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Carousel from '../../components/Carousel/carousel';
 import Spinner from '../../images/spinner.gif';
+import { Image } from 'cloudinary-react';
 
 export default function Landing() {
 

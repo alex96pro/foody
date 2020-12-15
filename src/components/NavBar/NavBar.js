@@ -1,19 +1,18 @@
 
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, { useEffect } from 'react';
+import {Link, useHistory} from 'react-router-dom';
 import './NavBar.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import {logout} from '../../common/actions/profile.actions';
 import CartIcon from '../../images/shopping-cart.png';
-import {profileAPI} from '../../common/api/auth.api';
 
 export default function NavBar(props) {
-
-    const dispatch = useDispatch();
     const numberOfMealsInCart = useSelector(state => state.cartReducer.meals.length);
-  
+    const dispatch = useDispatch();
+    const history = useHistory();
+
     const profile = () => {
-      dispatch(profileAPI());
+      history.push(`/profile/${localStorage.getItem("userId")}`);
     };
 
     const handleLogout = () => {
@@ -31,7 +30,7 @@ export default function NavBar(props) {
             {(props.isLoggedIn && props.role==="COOK") && <div><Link to="/cook" className="nav-link">Home</Link></div>}
 
             {props.isLoggedIn?
-            <div><Link to="/profile" onClick={profile} className="nav-link">Profile</Link><Link to="/" onClick={handleLogout} className="nav-link">Logout</Link></div>
+            <div><button onClick={profile} className="nav-link">Profile</button><Link to="/" onClick={handleLogout} className="nav-link">Logout</Link></div>
             :<div><Link to="/login" className="nav-link">Log In</Link></div>
             }
         </nav>
